@@ -45,7 +45,7 @@ set colored-stats On
 # comment-begin (``#'')
 #      The string that is inserted in vi mode when the insert-comment command is executed. This command is bound to M-#
 #      in emacs mode and to # in vi command mode.
-# set comment-begin "//"
+# set comment-begin //
 
 # completion-display-width (-1)
 #      The number of screen columns used to display possible matches when performing completion. The value is ignored
