@@ -215,7 +215,7 @@ set colored-stats On
 # mark-symlinked-directories (Off)
 #      If set to On, completed names which are symbolic links to directories
 #      have a slash appended (subject to the value of mark-directories).
-# set mark-symlinked-directories On
+set mark-symlinked-directories On
 
 # match-hidden-files (On)
 #      This variable, when set to On, causes readline to match files whose
