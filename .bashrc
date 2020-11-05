@@ -94,16 +94,20 @@ fi
 # some more ls aliases
 alias ls='ls --color --group-directories-first'
 alias ll='ls -alFh'
-alias la='ls -A'
-alias l='ls -CF'
+alias la='ls -ACF'
+alias l='ls -ACF'
 alias l.='ls -A | egrep "^(.*\[.+)?\.(.*\[.+)?"'
 
 # Alias to move up directory tree.
 alias ..='cd ..'
-alias ...='cd ../..'
+alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
 alias ..5='cd ../../../../..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
