@@ -257,7 +257,7 @@ set menu-complete-display-prefix On
 #      This alters the default behavior of the completion functions. If set to
 #      On, words which have more than one possible completion cause the matches
 #      to be listed immediately instead of ringing the bell.
-# set show-all-if-ambiguous On
+set show-all-if-ambiguous On
 
 # show-all-if-unmodified (Off)
 #      This alters the default behavior of the completion functions in a
