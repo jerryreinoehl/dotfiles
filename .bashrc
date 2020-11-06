@@ -62,6 +62,7 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS2='\[\e[1;32m\]> \[\e[0m\]'
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -133,7 +134,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# include mybashrc
-if [ -f ~/.mybashrc ]; then
-  . ~/.mybashrc
+DISTRO=$(hostnamectl | sed -n -e '/Operating/s/.*:[[:space:]]*\(.*\)/\L\1/p')
+
+if [[ "$DISTRO" = *ubuntu* ]]; then
+    alias update='sudo apt -y update && sudo apt -y upgrade'
 fi
