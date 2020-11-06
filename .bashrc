@@ -77,13 +77,14 @@ xterm*|rxvt*)
     ;;
 esac
 
+#=============================================================================
+# Aliases
+#=============================================================================
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
+    alias ls='ls --group-directories-first --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -93,13 +94,13 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ls='ls --color --group-directories-first'
+alias ls='ls --group-directories-first'
 alias ll='ls -alFh'
 alias la='ls -ACF'
 alias l='ls -ACF'
-alias l.='ls -A | egrep "^(.*\[.+)?\.(.*\[.+)?"'
+#alias l.='ls -A | egrep "^(.*\[.+)?\.(.*\[.+)?"'
 
-# Alias to move up directory tree.
+# navigation
 alias ..='cd ..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
@@ -113,6 +114,16 @@ alias ......='cd ../../../../..'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# distro-specific aliases
+distro=$(hostnamectl | sed -n -e '/Operating/s/.*:[[:space:]]*\(.*\)/\L\1/p')
+
+case $distro in
+*ubuntu*)
+    alias update='sudo apt -y update && sudo apt -y upgrade'
+    ;;
+esac
+unset distro
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -132,10 +143,4 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
-fi
-
-DISTRO=$(hostnamectl | sed -n -e '/Operating/s/.*:[[:space:]]*\(.*\)/\L\1/p')
-
-if [[ "$DISTRO" = *ubuntu* ]]; then
-    alias update='sudo apt -y update && sudo apt -y upgrade'
 fi
