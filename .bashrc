@@ -43,6 +43,26 @@ shopt -s dotglob
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+# ============================================================================
+# Prompts
+# ============================================================================
+
+PROMPT_COMMAND=__prompt_command
+
+function __prompt_command() {
+    local pipe_status="${PIPESTATUS[@]}"
+    local errors=
+
+    if [[ "$pipe_status" =~ ^0( 0)*$ ]]; then
+        errors=""
+    else
+        errors="\[\033[1;31m\] [$pipe_status]\[\033[0m\]"
+    fi
+
+    PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$errors\$ "
+    PS2='\[\e[1;32m\]> \[\e[0m\]'
+}
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
