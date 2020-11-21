@@ -47,21 +47,78 @@ shopt -s dotglob
 # Prompts
 # ============================================================================
 
+PS2='\[\e[1;32m\]> \[\e[0m\]'
+
 PROMPT_COMMAND=__prompt_command
 
+__pscwd_mode=full
+__toggle_pscwd_mode_key='\ew' # Alt-w
+
 function __prompt_command() {
-    local pipe_status="${PIPESTATUS[@]}"
-    local errors=
+    # capture PIPESTATUS before calling any other function
+    __pipestatus="${PIPESTATUS[@]}"
 
-    if [[ "$pipe_status" =~ ^0( 0)*$ ]]; then
-        errors=""
-    else
-        errors="\[\033[1;31m\] [$pipe_status]\[\033[0m\]"
-    fi
+    __set_pserror
+    __set_pscwd
 
-    PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$errors\$ "
-    PS2='\[\e[1;32m\]> \[\e[0m\]'
+    PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]${__pscwd}\[\033[00m\]${__pserror}\$ "
 }
+
+function __set_pserror() {
+    if [[ "$__pipestatus" =~ ^0( 0)*$ ]]; then
+        __pserror=""
+    else
+        __pserror="\[\033[1;31m\] [$__pipestatus]\[\033[0m\]"
+    fi
+}
+
+function __set_pscwd() {
+    case "$__pscwd_mode" in
+        abbreviated) __pscwd_abbreviated ;;
+        full)        __pscwd_full ;;
+        short)       __pscwd_short;;
+    esac
+}
+
+function __pscwd_abbreviated() {
+    local IFS='/'
+    local cwd=($(dirs +0))
+    local len=${#cwd[@]}
+    __pscwd=${cwd[0]}
+    for (( i=1; i<$len-1; i++)); do
+        __pscwd+=/${cwd[$i]:0:1}
+    done
+    [[ $len > 1 ]] && __pscwd+=/${cwd[$len-1]}
+    [[ -z $__pscwd ]] && __pscwd='/'
+}
+
+function __pscwd_full() {
+    __pscwd='\w'
+}
+
+function __pscwd_short() {
+    __pscwd='\W'
+}
+
+function __toggle_pscwd_mode() {
+    case "$__pscwd_mode" in
+        abbreviated) __pscwd_mode=full;;
+        full)        __pscwd_mode=short;;
+        short)       __pscwd_mode=abbreviated;;
+    esac
+}
+
+bind -r "${__toggle_pscwd_mode_key}"
+bind "\"${__toggle_pscwd_mode_key}\":\"__toggle_pscwd_mode_key_binding \C-j\""
+
+function __toggle_pscwd_mode_key_binding() {
+    __toggle_pscwd_mode # toggle PS1 CWD mode
+    tput cuu1           # move up a line
+    tput el             # clear line
+    return $__pipestatus  # maintain PIPESTATUS
+}
+
+# ============================================================================
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
