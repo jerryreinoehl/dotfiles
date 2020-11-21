@@ -112,9 +112,9 @@ bind -r "${__toggle_pscwd_mode_key}"
 bind "\"${__toggle_pscwd_mode_key}\":\"__toggle_pscwd_mode_key_binding \C-j\""
 
 function __toggle_pscwd_mode_key_binding() {
-    __toggle_pscwd_mode # toggle PS1 CWD mode
-    tput cuu1           # move up a line
-    tput el             # clear line
+    __toggle_pscwd_mode   # toggle PS1 CWD mode
+    tput cuu1             # move up a line
+    tput el               # clear line
     return $__pipestatus  # maintain PIPESTATUS
 }
 
