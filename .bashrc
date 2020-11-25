@@ -109,7 +109,7 @@ function __toggle_pscwd_mode() {
 }
 
 bind -r "${__toggle_pscwd_mode_key}"
-bind "\"${__toggle_pscwd_mode_key}\":\"\C-e \C-u __toggle_pscwd_mode_key_binding \C-j\""
+bind "\"${__toggle_pscwd_mode_key}\":\"\C-e \C-u \x20 __toggle_pscwd_mode_key_binding \C-j\""
 
 function __toggle_pscwd_mode_key_binding() {
     __toggle_pscwd_mode   # toggle PS1 CWD mode
