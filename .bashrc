@@ -200,7 +200,7 @@ distro=$(hostnamectl | sed -n -e '/Operating/s/.*:[[:space:]]*\(.*\)/\L\1/p')
 
 case $distro in
 *ubuntu*)
-    alias update='sudo apt -y update && sudo apt -y upgrade'
+    alias update='sudo apt -y update && sudo apt -y upgrade && sudo apt moo'
     ;;
 esac
 unset distro
