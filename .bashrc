@@ -18,10 +18,6 @@ HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# A command name that is the name of a directory is executed as if it were the
-# argument to the cd command. This option is only used by interactive shells.
-shopt -s autocd
-
 # Bash checks the window size after each external (non-builtin) command and, if
 # necessary, updates the values of LINES and COLUMNS.
 shopt -s checkwinsize
