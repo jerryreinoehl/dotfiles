@@ -57,7 +57,7 @@ function __prompt_command() {
     __set_pserror
     __set_pscwd
 
-    PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]${__pscwd}\[\033[00m\]${__pserror}\$ "
+    PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]${__pscwd}\[\033[00m\]${__pserror}\\$ "
 }
 
 function __set_pserror() {
