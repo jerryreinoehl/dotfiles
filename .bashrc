@@ -55,7 +55,6 @@ function __prompt_command() {
     __pipestatus="${PIPESTATUS[@]}"
 
     __set_pserror
-    __set_pscwd
 
     PS1="\[\033[1;32m\]\u@\h\[\033[0m\]:\[\033[1;34m\]\%w\[\033[0m\]\%e\\$ "
     __replace_prompt_vars PS1
@@ -69,30 +68,41 @@ function __set_pserror() {
     fi
 }
 
+#   $1 - Return var.
 function __set_pscwd() {
+    local -n _ret="$1"
+    local result=
+
     case "$__pscwd_mode" in
-        abbreviated) __pscwd_abbreviated ;;
-        full)        __pscwd_full ;;
-        short)       __pscwd_short;;
+        abbreviated) __pscwd_abbreviated result;;
+        full)        __pscwd_full result;;
+        short)       __pscwd_short result;;
     esac
+    _ret="$result"
 }
 
+#   $1 - Return var.
 function __pscwd_abbreviated() {
+    local -n _ret="$1"
     local IFS='/'
     local cwd=($(dirs +0))
     local last="${cwd[-1]}"
 
     __truncate_strings cwd
     cwd[-1]="$last"
-    __pscwd="${cwd[*]}"
+    _ret="${cwd[*]}"
 }
 
+#   $1 - Return var.
 function __pscwd_full() {
-    __pscwd='\w'
+    local -n _ret="$1"
+    _ret='\w'
 }
 
+#   $1 - Return var.
 function __pscwd_short() {
-    __pscwd='\W'
+    local -n _ret="$1"
+    _ret='\W'
 }
 
 function __toggle_pscwd_mode() {
@@ -114,10 +124,14 @@ function __toggle_pscwd_mode_key_binding() {
 }
 
 # Replaces special character sequences with their decoded values.
-#   $1 - String on which replace should take place.
+#   $1 - String on which replacements should take place.
 function __replace_prompt_vars() {
     local -n str="$1"
-    str="${str//\\%w/$__pscwd}"
+
+    local pscwd=
+    __set_pscwd pscwd
+    str="${str//\\%w/$pscwd}"
+
     str="${str//\\%e/$__pserror}"
 }
 
