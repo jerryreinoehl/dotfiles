@@ -57,7 +57,8 @@ function __prompt_command() {
     __set_pserror
     __set_pscwd
 
-    PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]${__pscwd}\[\033[00m\]${__pserror}\\$ "
+    PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\%w\[\033[00m\]\%e\\$ "
+    __replace_prompt_vars PS1
 }
 
 function __set_pserror() {
@@ -79,13 +80,11 @@ function __set_pscwd() {
 function __pscwd_abbreviated() {
     local IFS='/'
     local cwd=($(dirs +0))
-    local len=${#cwd[@]}
-    __pscwd=${cwd[0]}
-    for (( i=1; i<$len-1; i++)); do
-        __pscwd+=/${cwd[$i]:0:1}
-    done
-    [[ $len > 1 ]] && __pscwd+=/${cwd[$len-1]}
-    [[ -z $__pscwd ]] && __pscwd='/'
+    local last="${cwd[-1]}"
+
+    __truncate_strings cwd
+    cwd[-1]="$last"
+    __pscwd="${cwd[*]}"
 }
 
 function __pscwd_full() {
@@ -112,6 +111,24 @@ function __toggle_pscwd_mode_key_binding() {
     tput cuu1             # move up a line
     tput el               # clear line
     return $__pipestatus  # maintain PIPESTATUS
+}
+
+# Replaces special character sequences with their decoded values.
+#   $1 - String on which replace should take place.
+function __replace_prompt_vars() {
+    local -n str="$1"
+    str="${str//\\%w/$__pscwd}"
+    str="${str//\\%e/$__pserror}"
+}
+
+# Truncates all strings of an array to the first character.
+#   $1 - Name of array of strings.
+function __truncate_strings() {
+    local -n array="$1"
+    local len="${#array[@]}"
+    for (( i=0; i<$len; i++)); do
+        array[$i]="${array[$i]:0:1}"
+    done
 }
 
 # ============================================================================
