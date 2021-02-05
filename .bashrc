@@ -225,7 +225,7 @@ alias :q='exit'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # distro-specific aliases
-distro=$(hostnamectl | sed -n -e '/Operating/s/.*:[[:space:]]*\(.*\)/\L\1/p')
+distro=$(hostnamectl | sed -nr -e '/Operating\s+System/ s/.*:\s+(.*)/\L\1/p')
 
 case $distro in
 *ubuntu*)
