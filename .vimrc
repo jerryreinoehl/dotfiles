@@ -9,3 +9,4 @@ set autoindent
 set number
 set ignorecase
 set smartcase
+set cursorline
