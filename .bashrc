@@ -214,6 +214,8 @@ else
     alias l1='ls -ACF1'
 fi
 
+alias ip='ip -color=auto'
+
 # navigation
 alias ..='cd ..'
 alias ..2='cd ../..'
