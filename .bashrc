@@ -216,6 +216,8 @@ fi
 
 alias ip='ip -color=auto'
 
+alias v='vim'
+
 # navigation
 alias ..='cd ..'
 alias ..2='cd ../..'
