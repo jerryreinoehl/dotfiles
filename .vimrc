@@ -11,3 +11,4 @@ set ignorecase
 set smartcase
 set cursorline
 set hlsearch
+set showcmd
