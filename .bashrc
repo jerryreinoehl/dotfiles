@@ -204,7 +204,7 @@ fi
 if command -v exa > /dev/null; then
     alias ls='exa --group-directories-first'
     alias l='ls -aF'
-    alias ll='ls -alFg --time-style long-iso'
+    alias ll='ls -ablgF --time-style long-iso'
     alias la='ls -aLF'
     alias l1='ls -aF1'
 else
