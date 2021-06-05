@@ -28,5 +28,9 @@ set foldmethod=indent
 " Key Bindings
 "=============================================================================
 
+" navigate through wrapped lines
 nnoremap j gj
 nnoremap k gk
+
+" open and close folds
+nnoremap <space> za
