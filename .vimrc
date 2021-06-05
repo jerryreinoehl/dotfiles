@@ -17,6 +17,7 @@ set hlsearch
 set incsearch
 set showcmd
 set wildmenu
+set lazyredraw
 set showmatch
 
 set foldenable
