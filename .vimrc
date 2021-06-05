@@ -1,5 +1,6 @@
 colorscheme onedark
 syntax on
+highlight Normal ctermbg=None
 filetype indent on
 
 set tabstop=4
