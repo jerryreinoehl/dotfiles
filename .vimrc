@@ -23,3 +23,10 @@ set showmatch
 set foldenable
 set foldlevelstart=10
 set foldmethod=indent
+
+"=============================================================================
+" Key Bindings
+"=============================================================================
+
+nnoremap j gj
+nnoremap k gk
