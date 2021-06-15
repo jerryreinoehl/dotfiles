@@ -207,6 +207,8 @@ if command -v exa > /dev/null; then
     alias ll='ls -ablgF --time-style long-iso'
     alias la='ls -aLF'
     alias l1='ls -aF1'
+    alias lt='ls --tree'
+    alias llt='ls -l --tree'
 else
     alias l='ls -ACF'
     alias ll='ls -alFh'
