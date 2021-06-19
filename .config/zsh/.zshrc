@@ -1,7 +1,3 @@
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=2000
-
 setopt extendedglob
 setopt COMPLETE_ALIASES
 
