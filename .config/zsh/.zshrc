@@ -3,6 +3,7 @@ setopt COMPLETE_ALIASES
 
 # Set vi keymap
 bindkey -v
+export KEYTIMEOUT=1
 
 PS1='%F{green}%B%n@%M%b%f:%F{blue}%B%~%b%f%# '
 RPS1='[%F{yellow}%?%f]'
