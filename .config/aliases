@@ -67,3 +67,11 @@ alias gitp='git push'
 alias gitr='git remote'
 alias gitrs='git remote show'
 alias gits='git status'
+
+# ----------------------------------------------------------------------------
+# misc
+# ----------------------------------------------------------------------------
+alias ip='ip -color=auto'
+alias v='vim'
+alias vi='vim'
+alias :q='exit'
