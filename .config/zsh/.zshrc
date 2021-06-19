@@ -11,6 +11,9 @@ bindkey -v
 PS1='%F{green}%B%n@%M%b%f:%F{blue}%B%~%b%f%# '
 RPS1='[%F{yellow}%?%f]'
 
+# Source aliases
+[[ -r "$XDG_CONFIG_HOME/aliases" ]] && . "$XDG_CONFIG_HOME/aliases"
+
 # Enable command completion
 autoload -Uz compinit
 compinit
