@@ -1,0 +1,77 @@
+# ============================================================================
+# aliases
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# grep
+# ----------------------------------------------------------------------------
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# ----------------------------------------------------------------------------
+# ls/exa
+# ----------------------------------------------------------------------------
+if command -v exa > /dev/null; then
+    alias ls='exa --group-directories-first'
+    alias l='ls -aF'
+    alias ll='l -bgl --time-style long-iso --color-scale'
+    alias l1='l -1'
+    alias lt='l --tree'
+    alias llt='lt -l'
+else
+    alias ls='ls --group-directories-first --color=auto'
+    alias l='ls -vAF'
+    alias ll='l -hl'
+    alias l1='l -1'
+    alias lt='l -R'
+    alias llt='lt -l'
+fi
+
+# ----------------------------------------------------------------------------
+# navigation
+# ----------------------------------------------------------------------------
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias ..2='cd ../..'
+alias ..3='cd ../../..'
+alias ..4='cd ../../../..'
+alias ..5='cd ../../../../..'
+alias .-='cd -'
+
+# ----------------------------------------------------------------------------
+# update
+# ----------------------------------------------------------------------------
+alias syu='sudo pacman -Syu'
+alias update='sudo apt -y update && sudo apt -y upgrade && apt moo'
+
+# ----------------------------------------------------------------------------
+# git
+# ----------------------------------------------------------------------------
+alias gita='git add'
+alias gitap='git add --patch'
+alias gitai='git add --interactive'
+alias gitb='git branch'
+alias gitco='git checkout'
+alias gitcob='git checkout -b'
+alias gitc='git commit'
+alias gitd='git diff'
+alias gitl='git log'
+alias gitlg='git log --graph'
+alias gitlp='git log --patch --stat'
+alias gitpl='git pull'
+alias gitp='git push'
+alias gitr='git remote'
+alias gitrs='git remote show'
+alias gits='git status'
+
+# ----------------------------------------------------------------------------
+# misc
+# ----------------------------------------------------------------------------
+alias ip='ip -color=auto'
+alias v='vim'
+alias vi='vim'
+alias :q='exit'
