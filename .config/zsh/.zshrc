@@ -22,3 +22,4 @@ function source_if_exists() {
 
 source_if_exists /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source_if_exists /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source_if_exists ~/dev/cd_history/cd_history.sh
