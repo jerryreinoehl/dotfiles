@@ -1,4 +1,5 @@
 setopt extendedglob
+setopt histignorealldups
 setopt COMPLETE_ALIASES
 
 # Set vi keymap
