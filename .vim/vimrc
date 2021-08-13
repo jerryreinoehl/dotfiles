@@ -25,6 +25,7 @@ set foldlevelstart=10
 set foldmethod=indent
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
 
 "=============================================================================
 " Key Bindings
