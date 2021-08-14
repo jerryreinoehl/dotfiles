@@ -27,7 +27,7 @@ set foldmethod=indent
 set listchars=tab:\|\ ,trail:·,precedes:<,extends:>
 set list
 
-set formatoptions=tcroq
+set formatoptions=tcrq
 
 "=============================================================================
 " FileType Settings
