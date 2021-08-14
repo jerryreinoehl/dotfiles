@@ -1,7 +1,6 @@
 colorscheme onedark
-syntax on
 highlight Normal ctermbg=None
-filetype indent on
+syntax on
 
 set tabstop=4
 set shiftwidth=4
@@ -9,17 +8,21 @@ set softtabstop=4
 set expandtab
 set smarttab
 set autoindent
+
 set number
+set cursorline
+set showmatch
+
 set ignorecase
 set smartcase
-set cursorline
 set hlsearch
 set incsearch
+
 set showcmd
 set wildmenu
 set lazyredraw
-set showmatch
 
+filetype indent on
 set foldenable
 set foldlevelstart=10
 set foldmethod=indent
