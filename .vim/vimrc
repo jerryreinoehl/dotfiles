@@ -38,9 +38,20 @@ set formatoptions=tcrq
 "=============================================================================
 " FileType Settings
 "=============================================================================
-autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
-autocmd FileType vim setlocal comments=:\"
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup filetype_make
+    autocmd!
+    autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
+augroup END
+
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal comments=:\"
+augroup END
+
+augroup filetype_yaml
+    autocmd!
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup END
 
 "=============================================================================
 " Key Bindings
