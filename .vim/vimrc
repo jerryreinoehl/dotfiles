@@ -30,6 +30,8 @@ set foldmethod=indent
 set listchars=tab:\|\ ,trail:·,precedes:<,extends:>
 set list
 
+set timeoutlen=500
+
 " See :help fo-table
 set formatoptions=tcrq
 
