@@ -1,6 +1,6 @@
 colorscheme onedark
-highlight Normal ctermbg=None
 syntax on
+highlight Normal ctermbg=None
 
 set tabstop=4
 set shiftwidth=4
