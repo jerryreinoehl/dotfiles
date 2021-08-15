@@ -73,3 +73,5 @@ nnoremap k gk
 
 " Open and close folds
 nnoremap <space> za
+
+inoremap jk <esc>
