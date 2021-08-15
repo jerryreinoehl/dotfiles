@@ -1,6 +1,7 @@
 colorscheme onedark
 syntax on
 highlight Normal ctermbg=None
+highlight Search ctermbg=Blue ctermfg=LightGray
 
 set tabstop=4
 set shiftwidth=4
