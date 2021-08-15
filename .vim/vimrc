@@ -57,19 +57,19 @@ augroup END
 " Key Bindings
 "=============================================================================
 
-" source vimrc
+" Source vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
-" edit vimrc in new vsplit
+" Edit vimrc in new vsplit
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
-" wrap word in quotes
+" Wrap word in quotes
 nnoremap <leader>' WBi'<esc>Ea'<esc>
 nnoremap <leader>" WBi"<esc>Ea"<esc>
 nnoremap <leader>` WBi`<esc>Ea`<esc>
 
-" navigate through wrapped lines
+" Navigate through wrapped lines
 nnoremap j gj
 nnoremap k gk
 
-" open and close folds
+" Open and close folds
 nnoremap <space> za
