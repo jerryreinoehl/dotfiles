@@ -62,6 +62,11 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " edit vimrc in new vsplit
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 
+" wrap word in quotes
+nnoremap <leader>' WBi'<esc>Ea'<esc>
+nnoremap <leader>" WBi"<esc>Ea"<esc>
+nnoremap <leader>` WBi`<esc>Ea`<esc>
+
 " navigate through wrapped lines
 nnoremap j gj
 nnoremap k gk
