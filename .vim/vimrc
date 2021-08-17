@@ -70,6 +70,7 @@ nnoremap <leader><leader> :write<cr>
 nnoremap <leader>' :call WrapWord("'")<cr>
 nnoremap <leader>" :call WrapWord('"')<cr>
 nnoremap <leader>` :call WrapWord('`')<cr>
+nnoremap <leader>* :call WrapWord('*')<cr>
 
 " Navigate through wrapped lines
 nnoremap j gj
