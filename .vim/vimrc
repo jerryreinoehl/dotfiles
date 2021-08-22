@@ -88,3 +88,6 @@ colorscheme onedark
 syntax on
 highlight Normal ctermbg=None
 highlight Search ctermbg=Blue ctermfg=LightGray
+
+" Highlight trailing whitespace.
+call matchadd('Error', '\v\s+$')
