@@ -1,8 +1,3 @@
-colorscheme onedark
-syntax on
-highlight Normal ctermbg=None
-highlight Search ctermbg=Blue ctermfg=LightGray
-
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -85,3 +80,11 @@ inoremap jk <esc>
 function! WrapWord(char)
     execute "normal! WBi" . a:char . "\eEa" . a:char . "\e"
 endfunction
+
+"=============================================================================
+" Color Scheme
+"=============================================================================
+colorscheme onedark
+syntax on
+highlight Normal ctermbg=None
+highlight Search ctermbg=Blue ctermfg=LightGray
