@@ -84,6 +84,7 @@ endfunction
 "=============================================================================
 " Color Scheme
 "=============================================================================
+call clearmatches()
 colorscheme onedark
 syntax on
 highlight Normal ctermbg=None
