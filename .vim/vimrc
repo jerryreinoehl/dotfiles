@@ -62,10 +62,10 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader><leader> :write<cr>
 
 " Wrap word in quotes
-nnoremap <leader>' :call WrapWord("'")<cr>
-nnoremap <leader>" :call WrapWord('"')<cr>
-nnoremap <leader>` :call WrapWord('`')<cr>
-nnoremap <leader>* :call WrapWord('*')<cr>
+nnoremap <leader>' :call <SID>WrapWord("'")<cr>
+nnoremap <leader>" :call <SID>WrapWord('"')<cr>
+nnoremap <leader>` :call <SID>WrapWord('`')<cr>
+nnoremap <leader>* :call <SID>WrapWord('*')<cr>
 
 " Navigate through wrapped lines
 nnoremap j gj
@@ -77,7 +77,7 @@ nnoremap <space> za
 inoremap jk <esc>
 
 " Inserts `char` before and after the word under the cursor.
-function! WrapWord(char)
+function! s:WrapWord(char)
     execute "normal! WBi" . a:char . "\eEa" . a:char . "\e"
 endfunction
 
