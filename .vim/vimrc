@@ -91,4 +91,5 @@ highlight Normal ctermbg=None
 highlight Search ctermbg=Blue ctermfg=LightGray
 
 " Highlight trailing whitespace.
-call matchadd('Error', '\v\s+$')
+highlight TrailingWhitespace ctermfg=red
+call matchadd('TrailingWhitespace', '\v\s+$')
