@@ -88,7 +88,7 @@ call clearmatches()
 colorscheme onedark
 syntax on
 highlight Normal ctermbg=None
-highlight Search ctermbg=Blue ctermfg=LightGray
+highlight Search ctermbg=Black ctermfg=Cyan
 
 " Highlight trailing whitespace.
 highlight TrailingWhitespace ctermfg=red
