@@ -125,6 +125,7 @@ extension_defaults = widget_defaults.copy()
 screens = [
     Screen(
         wallpaper='~/.config/qtile/wallpaper',
+        wallpaper_mode='fill',
         bottom=bar.Bar(
             [
                 widget.CurrentLayout(),
