@@ -1,6 +1,4 @@
-.git/
-.gitignore
-.gitmodules
+*.git*
 exclude
 Makefile
 LICENSE
