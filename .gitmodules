@@ -1,3 +1,3 @@
 [submodule "backgrounds"]
-	path = backgrounds
+	path = .local/share/backgrounds
 	url = ssh://jerry@jerryr.us:23101/~/dev/repos/backgrounds.git
