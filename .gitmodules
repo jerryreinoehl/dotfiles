@@ -1,0 +1,3 @@
+[submodule ".config/wallpapers"]
+	path = .config/wallpapers
+	url = ssh://jerry@jerryr.us:23101/~/dev/repos/wallpapers.git
