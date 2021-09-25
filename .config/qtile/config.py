@@ -31,6 +31,20 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
+import os
+
+home = os.path.expanduser('~')
+
+config_home = os.environ.get(
+    'XDG_CONFIG_HOME',
+    os.path.join(home, '.config')
+)
+
+wallpaper = os.environ.get(
+    'QTILE_WALLPAPER',
+    os.path.join(config_home, 'wallpaper')
+)
+
 mod = "mod4"
 terminal = guess_terminal()
 
@@ -124,7 +138,7 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        wallpaper='~/.config/qtile/wallpaper',
+        wallpaper=wallpaper,
         wallpaper_mode='fill',
         bottom=bar.Bar(
             [
