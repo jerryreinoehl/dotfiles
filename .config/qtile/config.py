@@ -40,6 +40,8 @@ config_home = os.environ.get(
     os.path.join(home, '.config')
 )
 
+# The wallpaper can be set through the enviroment variable 'QTILE_WALLPAPER'
+# or with a link named 'wallpaper' under the config directory.
 wallpaper = os.environ.get(
     'QTILE_WALLPAPER',
     os.path.join(config_home, 'wallpaper')
