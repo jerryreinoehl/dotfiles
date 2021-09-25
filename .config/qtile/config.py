@@ -156,7 +156,6 @@ screens = [
                 ),
                 widget.Systray(),
                 widget.Clock(format='%d<b>%H%MR</b>%^b%y'),
-                widget.QuickExit(),
             ],
             24,
         ),
