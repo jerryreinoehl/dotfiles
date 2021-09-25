@@ -116,7 +116,7 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font='sans',
+    font='SourceCodePro',
     fontsize=12,
     padding=3,
 )
