@@ -17,6 +17,12 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
 
+if [[ -r "$ZDOTDIR/source" ]]; then
+    for file in $ZDOTDIR/source/*; do
+        source "$file"
+    done
+fi
+
 function source_if_exists() {
     [[ -r "$1" ]] && source "$1"
 }
