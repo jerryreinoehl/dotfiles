@@ -35,7 +35,7 @@ __prompt_error() {
 __prompt_bgjobs() {
     local -i num_jobs=${#jobtexts[@]}
     (( num_jobs > 0 )) \
-        && REPLY="%B%F{white}*$num_jobs%f%b" \
+        && REPLY=$'%{\e[1;2;37m%}*'$num_jobs$'%{\e[0m%}' \
         || REPLY=""
 }
 
