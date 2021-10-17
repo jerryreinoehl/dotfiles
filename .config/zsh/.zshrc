@@ -19,7 +19,7 @@ zstyle ':completion:*' menu select
 
 if [[ -r "$ZDOTDIR/source" ]]; then
     for file in $ZDOTDIR/source/*; do
-        source "$file"
+        [[ -r "$file" ]] && source "$file"
     done
 fi
 
