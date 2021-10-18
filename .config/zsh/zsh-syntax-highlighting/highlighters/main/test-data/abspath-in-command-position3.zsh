@@ -28,10 +28,8 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
-BUFFER=$'/bin; /bin'
+BUFFER=$'/bin'
 
 expected_region_highlight=(
-  '1 4 unknown-token' # /bin (in middle)
-  '5 5 commandseparator' # ;
-  '7 10 path_prefix' # /bin (at end)
+  '1 4 path' # /bin
 )

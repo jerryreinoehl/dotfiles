@@ -31,5 +31,5 @@
 BUFFER=$'/'
 
 expected_region_highlight=(
-  '1 1 path_prefix' # /
+  '1 1 path' # /
 )
