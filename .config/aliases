@@ -59,6 +59,7 @@ alias v='vim'
 alias vi='vim'
 alias :q='exit'
 
+# Backup files and/or directories.
 bak() {
     for file in "$@"; do
         if [[ -e "$file" ]]; then
@@ -68,6 +69,7 @@ bak() {
     done
 }
 
+# Restore files and/or directories.
 unbak() {
     for file in "$@"; do
         if [[ "$file" == *.bak ]]; then
