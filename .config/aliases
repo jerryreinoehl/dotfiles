@@ -62,6 +62,7 @@ alias :q='exit'
 # Backup files and/or directories.
 bak() {
     for file in "$@"; do
+        file="${file%/}" # strip trailing '/'
         if [[ -e "$file" ]]; then
             [[ -e "$file.bak" ]] && rm -r "$file.bak"
             cp -r "$file" "$file.bak"
@@ -72,6 +73,7 @@ bak() {
 # Restore files and/or directories.
 unbak() {
     for file in "$@"; do
+        file="${file%/}" # strip trailing '/'
         if [[ "$file" == *.bak ]]; then
             [[ -e "${file%.bak}" ]] && rm -r "${file%.bak}"
             mv "$file" "${file%.bak}"
