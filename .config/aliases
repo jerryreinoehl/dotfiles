@@ -8,8 +8,8 @@
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-_alias_find_iname() { find . -iname "*$1*"; }
-alias \?=_alias_find_iname
+__alias_find_iname() { find . -iname "*$1*"; }
+alias \?=__alias_find_iname
 alias \?\?='grep -Eirn --color=auto'
 
 # ----------------------------------------------------------------------------
