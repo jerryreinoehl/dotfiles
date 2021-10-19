@@ -15,9 +15,9 @@ __prompt() {
     PS1="%B%F{green}%n@%m%f %F{blue}%1~%f%b $ptr "
 
     RPS1=""
-    [[ ! -z "$error" ]] && RPS1+="$error"
-    [[ ! -z "$bgjobs" ]] && RPS1+=" $bgjobs"
-    [[ ! -z "$branch" ]] && RPS1+=" $branch"
+    [[ -n "$error" ]] && RPS1+="$error"
+    [[ -n "$bgjobs" ]] && RPS1+=" $bgjobs"
+    [[ -n "$branch" ]] && RPS1+=" $branch"
 }
 
 __prompt_pointer() {
@@ -55,7 +55,7 @@ __prompt_git_head() {
     local dir="$1"
     REPLY=""
 
-    while [[ ! -z "$dir" ]]; do
+    while [[ -n "$dir" ]]; do
         [[ -r "$dir/.git/HEAD" ]] && REPLY="$dir/.git/HEAD" && return
         dir="${dir%/*}"
     done
