@@ -58,3 +58,21 @@ alias ip='ip -color=auto'
 alias v='vim'
 alias vi='vim'
 alias :q='exit'
+
+bak() {
+    for file in "$@"; do
+        if [[ -e "$file" ]]; then
+            [[ -e "$file.bak" ]] && rm -r "$file.bak"
+            cp -r "$file" "$file.bak"
+        fi
+    done
+}
+
+unbak() {
+    for file in "$@"; do
+        if [[ "$file" == *.bak ]]; then
+            [[ -e "${file%.bak}" ]] && rm -r "${file%.bak}"
+            mv "$file" "${file%.bak}"
+        fi
+    done
+}
