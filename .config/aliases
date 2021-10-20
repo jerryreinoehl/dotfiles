@@ -54,7 +54,7 @@ alias update='sudo apt -y update && sudo apt -y upgrade && apt moo'
 # ----------------------------------------------------------------------------
 # misc
 # ----------------------------------------------------------------------------
-alias ip='ip -color=auto'
+alias ip='ip -c'
 alias v='vim'
 alias vi='vim'
 alias :q='exit'
