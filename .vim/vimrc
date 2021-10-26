@@ -34,6 +34,11 @@ set formatoptions=tcrq
 "=============================================================================
 " FileType Settings
 "=============================================================================
+augroup filetype_c
+    autocmd!
+    autocmd FileType c,cpp setlocal ts=2 sts=2 sw=2 expandtab
+augroup END
+
 augroup filetype_make
     autocmd!
     autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
