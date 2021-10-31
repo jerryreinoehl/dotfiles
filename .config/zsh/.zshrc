@@ -14,7 +14,6 @@ autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
 
-
 # Source all files under zsh/source directory
 if [[ -r "$ZDOTDIR/source" ]]; then
     for file in $ZDOTDIR/source/*; do
