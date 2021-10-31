@@ -1,6 +1,6 @@
 # ============================================================================
 # prompt.zsh
-# v0.3.0
+# v0.4.0
 # ============================================================================
 
 declare -A PROMPT_COLOR
@@ -15,6 +15,18 @@ declare -A PROMPT_CHAR
 (( $UID == 0 )) && PROMPT_CHAR[ptr]="#" || PROMPT_CHAR[ptr]=">"
 PROMPT_CHAR[branch]=$'\u2387 '
 
+zle -N prompt-ps1 __prompt_ps1
+zle -N prompt-rps1 __prompt_rps1
+zle -N zle-keymap-select
+
+zle-keymap-select() {
+  local save_ptr="$PROMPT_CHAR[ptr]"
+  [[ "$KEYMAP" == "vicmd" ]] && PROMPT_CHAR[ptr]=":"
+  zle prompt-ps1
+  zle reset-prompt
+  PROMPT_CHAR[ptr]="$save_ptr"
+}
+
 precmd_functions+=(__prompt)
 
 __prompt() {
@@ -24,16 +36,26 @@ __prompt() {
     && __prompt_error_occurred=0 \
     || __prompt_error_occurred=1
 
-  local ptr branch error bgjobs REPLY
+  __prompt_ps1
+  __prompt_rps1
+}
 
-  __prompt_pointer; ptr="$REPLY"
-  __prompt_error; error="$REPLY"
-  __prompt_bgjobs; bgjobs="$REPLY"
-  __prompt_branch; branch="$REPLY"
+__prompt_ps1() {
+  local ptr REPLY
+
+  __prompt_ptr; ptr="$REPLY"
 
   PS1=$'%{\e['$PROMPT_COLOR[host]$'m%}%n@%m%{\e[0m%}'
   PS1+=$' %{\e['$PROMPT_COLOR[dir]$'m%}%1~%{\e[0m%}'
   PS1+=" $ptr "
+}
+
+__prompt_rps1() {
+  local branch error bgjobs REPLY
+
+  __prompt_error; error="$REPLY"
+  __prompt_bgjobs; bgjobs="$REPLY"
+  __prompt_branch; branch="$REPLY"
 
   RPS1=""
   [[ -n "$error" ]] && RPS1+="$error"
@@ -41,7 +63,7 @@ __prompt() {
   [[ -n "$branch" ]] && RPS1+=" $branch"
 }
 
-__prompt_pointer() {
+__prompt_ptr() {
   local color
   (( $__prompt_error_occurred )) \
     && color=$PROMPT_COLOR[error] \
