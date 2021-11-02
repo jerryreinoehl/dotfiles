@@ -86,9 +86,24 @@ nnoremap <space> za
 
 inoremap jk <esc>
 
+" Navigate vim buffers and tmux panes
+nnoremap <silent> <C-e>h :call SelectPane('h')<cr>
+nnoremap <silent> <C-e>j :call SelectPane('j')<cr>
+nnoremap <silent> <C-e>k :call SelectPane('k')<cr>
+nnoremap <silent> <C-e>l :call SelectPane('l')<cr>
+
 " Inserts `char` before and after the word under the cursor.
 function! s:WrapWord(char)
     execute "normal! WBi" . a:char . "\eEa" . a:char . "\e"
+endfunction
+
+function! SelectPane(direction)
+    let winNum = winnr()
+    silent! execute 'wincmd ' . a:direction
+    " If the winnr is still the same it is the last pane.
+    if winNum ==# winnr()
+        call system('tmux select-pane -' . tr(a:direction, 'hjkl', 'LDUR'))
+    endif
 endfunction
 
 "=============================================================================
