@@ -54,6 +54,7 @@ alias update='sudo apt -y update && sudo apt -y upgrade && apt moo'
 # ----------------------------------------------------------------------------
 # misc
 # ----------------------------------------------------------------------------
+alias less='less -FRX'
 alias ip='COLORFGBG=";0" ip -c'
 alias v='vim'
 alias vi='vim'
