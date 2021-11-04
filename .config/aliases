@@ -8,9 +8,9 @@
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-__alias_find_iname() { find . -iname "*$1*" | grep -i "$1"; }
+__alias_find_iname() { find . -iname "*$1*" | grep -i --color=always "$1"; }
 alias \?=__alias_find_iname
-alias \?\?='grep -Eirn --color=auto'
+alias \?\?='grep -Eirn --color=always'
 
 # ----------------------------------------------------------------------------
 # ls/exa
