@@ -60,24 +60,27 @@ alias v='vim'
 alias vi='vim'
 alias :q='exit'
 
+# ----------------------------------------------------------------------------
+# misc functions
+# ----------------------------------------------------------------------------
 # Backup files and/or directories.
 bak() {
-    for file in "$@"; do
-        file="${file%/}" # strip trailing '/'
-        if [[ -e "$file" ]]; then
-            [[ -e "$file.bak" ]] && rm -r "$file.bak"
-            cp -r "$file" "$file.bak"
-        fi
-    done
+  for file in "$@"; do
+    file="${file%/}" # strip trailing '/'
+    if [[ -e "$file" ]]; then
+      [[ -e "$file.bak" ]] && rm -r "$file.bak"
+      cp -r "$file" "$file.bak"
+    fi
+  done
 }
 
 # Restore files and/or directories.
 unbak() {
-    for file in "$@"; do
-        file="${file%/}" # strip trailing '/'
-        if [[ "$file" == *.bak ]]; then
-            [[ -e "${file%.bak}" ]] && rm -r "${file%.bak}"
-            mv "$file" "${file%.bak}"
-        fi
-    done
+  for file in "$@"; do
+    file="${file%/}" # strip trailing '/'
+    if [[ "$file" == *.bak ]]; then
+      [[ -e "${file%.bak}" ]] && rm -r "${file%.bak}"
+      mv "$file" "${file%.bak}"
+    fi
+  done
 }
