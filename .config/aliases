@@ -8,9 +8,8 @@
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-__alias_find_iname() { find . -iname "*$1*" | grep -i --color=always "$1"; }
-alias \?=__alias_find_iname
-alias \?\?='grep -Eirn --color=always'
+alias \?='__alias_find'
+alias \?\?='__alias_search'
 
 # ----------------------------------------------------------------------------
 # ls/exa
@@ -55,7 +54,7 @@ alias update='sudo apt -y update && sudo apt -y upgrade && apt moo'
 # misc
 # ----------------------------------------------------------------------------
 alias less='less -FRX'
-alias ip='COLORFGBG=";0" ip -c'
+alias ip='__alias_ip'
 alias v='vim'
 alias vi='vim'
 alias :q='exit'
@@ -83,4 +82,47 @@ unbak() {
       mv "$file" "${file%.bak}"
     fi
   done
+}
+
+# ----------------------------------------------------------------------------
+# tty helper functions
+# ----------------------------------------------------------------------------
+__alias_tty_set() {
+  [[ -t 1 ]] && __alias_istty=1 || __alias_istty=0
+}
+
+__alias_tty_less() {
+  (( __alias_istty )) && command less "$@" || command cat
+}
+
+__alias_tty_grep() {
+  (( __alias_istty )) \
+    && command grep --color=always "$@" \
+    || command grep --color=never "$@"
+}
+
+__alias_tty_ip() {
+  (( __alias_istty )) \
+    && COLORFGBG=";0" command ip -c "$@" \
+    || command ip "$@"
+}
+
+# ----------------------------------------------------------------------------
+# tty alias functions
+# ----------------------------------------------------------------------------
+__alias_find() {
+  __alias_tty_set
+  command find . -iname "*$1*" | \
+    __alias_tty_grep -i "$1"   | \
+    __alias_tty_less -FRX
+}
+
+__alias_search() {
+  __alias_tty_set
+  __alias_tty_grep -Eirn "$@" | __alias_tty_less -FRX
+}
+
+__alias_ip() {
+  __alias_tty_set
+  __alias_tty_ip "$@" | __alias_tty_less -FRX
 }
