@@ -118,7 +118,7 @@ __alias_find() {
   for (( i=0; i<argc; i++ )); do
     pattern=${args[@]:$i:1}
 
-    find_args+=(-iname "*$pattern*")
+    find_args+=(-iregex ".*$pattern.*")
     (( i < argc-1 )) && find_args+=(-o)
 
     grep_args+=(-e "$pattern")
