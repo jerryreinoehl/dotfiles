@@ -111,15 +111,34 @@ __alias_tty_ip() {
 # tty alias functions
 # ----------------------------------------------------------------------------
 __alias_find() {
+  local -a args=($@) find_args grep_args
+  local -i argc="${#args[@]}" i
+  local pattern
+
+  for (( i=0; i<argc; i++ )); do
+    pattern=${args[@]:$i:1}
+
+    find_args+=(-iname "*$pattern*")
+    (( i < argc-1 )) && find_args+=(-o)
+
+    grep_args+=(-e "$pattern")
+  done
+
   __alias_tty_set
-  command find . -iname "*$1*" | \
-    __alias_tty_grep -i "$1"   | \
+  command find . "${find_args[@]}" | \
+    __alias_tty_grep -i "${grep_args[@]}"   | \
     __alias_tty_less -FRX
 }
 
 __alias_search() {
+  local -a grep_args
+
+  for pattern in "$@"; do
+    grep_args+=(-e "$pattern")
+  done
+
   __alias_tty_set
-  __alias_tty_grep -Eirn "$@" | __alias_tty_less -FRX
+  __alias_tty_grep -Eirn "${grep_args[@]}" | __alias_tty_less -FRX
 }
 
 __alias_ip() {
