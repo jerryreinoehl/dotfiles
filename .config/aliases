@@ -55,6 +55,7 @@ alias update='sudo apt -y update && sudo apt -y upgrade && apt moo'
 # ----------------------------------------------------------------------------
 alias less='less -FRX'
 alias ip='__alias_ip'
+alias tree='tree -C'
 alias v='vim'
 alias vi='vim'
 alias :q='exit'
