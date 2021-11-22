@@ -126,9 +126,9 @@ __alias_find() {
   done
 
   __alias_tty_set
-  command find . "${find_args[@]}" | \
-    __alias_tty_grep -i "${grep_args[@]}"   | \
-    __alias_tty_less -FRX
+  command find . "${find_args[@]}" \
+    | __alias_tty_grep -i "${grep_args[@]}" \
+    | __alias_tty_less -FRX
 }
 
 __alias_search() {
