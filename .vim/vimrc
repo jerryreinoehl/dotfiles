@@ -87,10 +87,12 @@ nnoremap <space> za
 inoremap jk <esc>
 
 " Navigate vim buffers and tmux panes
-nnoremap <silent> <C-e>h :call SelectPane('h')<cr>
-nnoremap <silent> <C-e>j :call SelectPane('j')<cr>
-nnoremap <silent> <C-e>k :call SelectPane('k')<cr>
-nnoremap <silent> <C-e>l :call SelectPane('l')<cr>
+if !empty($VIM_TMUX_NAV) && $VIM_TMUX_NAV !=# "0"
+    nnoremap <silent> <C-e>h :call SelectPane('h')<cr>
+    nnoremap <silent> <C-e>j :call SelectPane('j')<cr>
+    nnoremap <silent> <C-e>k :call SelectPane('k')<cr>
+    nnoremap <silent> <C-e>l :call SelectPane('l')<cr>
+endif
 
 " Inserts `char` before and after the word under the cursor.
 function! s:WrapWord(char)
