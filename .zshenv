@@ -15,3 +15,5 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 export ANSIBLE_STDOUT_CALLBACK='debug'
+
+export VIM_TMUX_NAV=1
