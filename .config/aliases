@@ -15,19 +15,19 @@ alias \?\?='__alias_search'
 # ls/exa
 # ----------------------------------------------------------------------------
 if command -v exa > /dev/null; then
-    alias ls='exa --group-directories-first'
-    alias l='ls -aF'
-    alias ll='l -bgl --time-style long-iso --color-scale'
-    alias l1='l -1'
-    alias lt='l --tree'
-    alias llt='lt -l'
+  alias ls='exa --group-directories-first'
+  alias l='ls -aF'
+  alias ll='l -bgl --time-style long-iso --color-scale'
+  alias l1='l -1'
+  alias lt='l --tree'
+  alias llt='lt -l'
 else
-    alias ls='ls --group-directories-first --color=auto'
-    alias l='ls -vAF'
-    alias ll='l -hl'
-    alias l1='l -1'
-    alias lt='l -R'
-    alias llt='lt -l'
+  alias ls='ls --group-directories-first --color=auto'
+  alias l='ls -vAF'
+  alias ll='l -hl'
+  alias l1='l -1'
+  alias lt='l -R'
+  alias llt='lt -l'
 fi
 
 # ----------------------------------------------------------------------------
