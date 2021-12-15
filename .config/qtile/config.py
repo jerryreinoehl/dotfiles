@@ -49,6 +49,7 @@ wallpaper = os.environ.get(
 
 mod = "mod4"
 terminal = guess_terminal()
+browser = "firefox"
 
 keys = [
     # Switch between windows
@@ -87,6 +88,7 @@ keys = [
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod], "b", lazy.spawn(browser), desc="Launch browser"),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
