@@ -16,6 +16,7 @@ set incsearch
 
 set showcmd
 set wildmenu
+set laststatus=2
 set lazyredraw
 
 filetype indent on
