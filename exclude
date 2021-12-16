@@ -1,5 +1,4 @@
 *.git*
 exclude
 Makefile
-LICENSE
 TODO
