@@ -104,7 +104,7 @@ __alias_tty_grep() {
 
 __alias_tty_ip() {
   (( __alias_istty )) \
-    && COLORFGBG=";0" command ip -c "$@" \
+    && command ip -c "$@" \
     || command ip "$@"
 }
 
@@ -144,5 +144,5 @@ __alias_search() {
 
 __alias_ip() {
   __alias_tty_set
-  __alias_tty_ip "$@" | __alias_tty_less -FRX
+  COLORFGBG=";0" __alias_tty_ip "$@" | __alias_tty_less -FRX
 }
