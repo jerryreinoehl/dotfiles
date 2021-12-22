@@ -126,7 +126,7 @@ layouts = [
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(),
+    layout.MonadTall(margin=5),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
