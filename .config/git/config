@@ -4,3 +4,5 @@
 
 [pull]
 	rebase = true
+
+[color]
