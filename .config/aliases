@@ -58,6 +58,7 @@ alias ip='__alias_ip'
 alias tree='tree -C'
 alias v='vim'
 alias vi='vim'
+alias z='zathura'
 alias :q='exit'
 
 # ----------------------------------------------------------------------------
