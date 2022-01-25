@@ -187,7 +187,6 @@ colors:
   primary:
     background: '#040404'
     foreground: '#00a8ff'
-    #foreground: '#abb2bf'
 
     # Bright and dim foreground colors
     #
