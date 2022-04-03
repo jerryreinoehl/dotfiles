@@ -51,6 +51,7 @@ mod = "mod4"
 terminal = guess_terminal()
 browser = "firefox"
 
+
 keys = [
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
