@@ -53,6 +53,23 @@ terminal = guess_terminal()
 browser = "firefox"
 
 
+@lazy.function
+def increase_margin(qtile, step=5):
+    qtile.current_layout.margin += step
+    qtile.current_layout.group.layout_all()
+
+@lazy.function
+def decrease_margin(qtile, step=5):
+    current_margin = qtile.current_layout.margin
+    current_margin -= step
+
+    if current_margin < 0:
+        current_margin = 0
+
+    qtile.current_layout.margin = current_margin
+    qtile.current_layout.group.layout_all()
+
+
 keys = [
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -113,6 +130,10 @@ keys = [
     # Hide and show bar.
     Key([mod, "shift"], "minus", lazy.hide_show_bar(),
         desc="Hide and show bar"),
+
+    # Increase and decrease layout margin.
+    Key([mod], "m", decrease_margin(), desc="Decrease margin"),
+    Key([mod, "shift"], "m", increase_margin(), desc="Increase margin"),
 ]
 
 groups = [Group(i) for i in "123456789"]
