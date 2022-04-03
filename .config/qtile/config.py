@@ -53,6 +53,25 @@ terminal = guess_terminal()
 browser = "firefox"
 
 
+class PulseAudio():
+    @lazy.function
+    def set_sink_volume(qtile, volume="+1%"):
+        cmd = f"pactl set-sink-volume @DEFAULT_SINK@ {volume}".split()
+        qtile.cmd_spawn(cmd)
+
+    @lazy.function
+    def set_sink_mute(qtile, mute=None):
+        mute_arg = "toggle"
+
+        if mute == True:
+            mute_arg = "1"
+        elif mute == False:
+            mute_arg = "0"
+
+        cmd = f"pactl set-sink-mute @DEFAULT_SINK@ {mute_arg}".split()
+        qtile.cmd_spawn(cmd)
+
+
 @lazy.function
 def increase_margin(qtile, step=5):
     qtile.current_layout.margin += step
@@ -134,7 +153,15 @@ keys = [
     # Increase and decrease layout margin.
     Key([mod], "m", decrease_margin(), desc="Decrease margin"),
     Key([mod, "shift"], "m", increase_margin(), desc="Increase margin"),
+
+    # Volume control.
+    Key([], "XF86AudioRaiseVolume", PulseAudio.set_sink_volume("+1%")),
+    Key([], "XF86AudioLowerVolume", PulseAudio.set_sink_volume("-1%")),
+    Key(["shift"], "XF86AudioRaiseVolume", PulseAudio.set_sink_volume("+5%")),
+    Key(["shift"], "XF86AudioLowerVolume", PulseAudio.set_sink_volume("-5%")),
+    Key([], "XF86AudioMute", PulseAudio.set_sink_mute()),
 ]
+
 
 groups = [Group(i) for i in "123456789"]
 
