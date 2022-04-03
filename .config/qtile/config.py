@@ -165,6 +165,28 @@ screens = [
             background="#040404",
         ),
     ),
+    Screen(
+        wallpaper=wallpaper,
+        wallpaper_mode="fill",
+        bottom=bar.Bar(
+            [
+                widget.CurrentLayout(),
+                widget.GroupBox(),
+                widget.Prompt(),
+                widget.WindowName(),
+                widget.Chord(
+                    chords_colors={
+                        "launch": ("#ff0000", "#ffffff"),
+                    },
+                    name_transform=lambda name: name.upper(),
+                ),
+                widget.Systray(),
+                widget.Clock(format="%d<b>%H%MR</b>%^b%y"),
+            ],
+            24,
+            background="#040404",
+        ),
+    ),
 ]
 
 # Drag floating layouts.
