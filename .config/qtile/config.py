@@ -179,7 +179,6 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Systray(),
                 widget.Clock(format="%d<b>%H%MR</b>%^b%y"),
             ],
             24,
