@@ -129,7 +129,13 @@ for i in groups:
     ])
 
 layouts = [
-    layout.Columns(border_focus_stack="#d75f5f", margin=5),
+    layout.Columns(
+        border_width=2,
+        border_on_single=True,
+        border_normal="#00111a",
+        border_focus="#0088cc",
+        margin=5,
+    ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
