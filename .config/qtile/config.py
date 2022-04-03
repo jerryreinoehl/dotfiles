@@ -158,7 +158,7 @@ layouts = [
         border_width=2,
         border_on_single=True,
         border_normal="#00111a",
-        border_focus="#0088cc",
+        border_focus="#00aaff",
         margin=5,
     ),
     layout.Max(),
