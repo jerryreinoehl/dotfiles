@@ -33,6 +33,7 @@ from libqtile.utils import guess_terminal
 
 import os
 
+
 home = os.path.expanduser("~")
 
 config_home = os.environ.get(
@@ -105,6 +106,9 @@ keys = [
         desc="Move to next group"),
     Key([mod], "p", lazy.screen.prev_group(skip_empty=True),
         desc="Move to previous group"),
+
+    # Move to next screen.
+    Key([mod], "semicolon", lazy.next_screen(), desc="Move to next screen"),
 ]
 
 groups = [Group(i) for i in "123456789"]
