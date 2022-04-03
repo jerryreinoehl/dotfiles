@@ -99,6 +99,12 @@ keys = [
 
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
+
+    # Move between groups.
+    Key([mod], "n", lazy.screen.next_group(skip_empty=True),
+        desc="Move to next group"),
+    Key([mod], "p", lazy.screen.prev_group(skip_empty=True),
+        desc="Move to previous group"),
 ]
 
 groups = [Group(i) for i in "123456789"]
