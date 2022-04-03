@@ -109,6 +109,10 @@ keys = [
 
     # Move to next screen.
     Key([mod], "semicolon", lazy.next_screen(), desc="Move to next screen"),
+
+    # Hide and show bar.
+    Key([mod, "shift"], "minus", lazy.hide_show_bar(),
+        desc="Hide and show bar"),
 ]
 
 groups = [Group(i) for i in "123456789"]
