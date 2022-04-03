@@ -162,6 +162,7 @@ screens = [
                 widget.Clock(format="%d<b>%H%MR</b>%^b%y"),
             ],
             24,
+            background="#040404",
         ),
     ),
 ]
