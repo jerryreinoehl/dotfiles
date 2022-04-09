@@ -5,6 +5,8 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
+export WINIT_X11_SCALE_FACTOR=1
+
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
