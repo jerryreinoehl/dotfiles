@@ -5,10 +5,21 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-brightness="0.73"
-gamma="1:0.9:0.82"
-
 export WINIT_X11_SCALE_FACTOR=1
+
+
+configure_displays() {
+  local brightness="0.73"
+  local gamma="1:0.9:0.82"
+  local monitors=$(
+    xrandr --listactivemonitors | awk 'NR != 1 { printf "%s ", $NF }'
+  )
+
+  for monitor in $monitors; do
+    xrandr --output "$monitor" --brightness "$brightness" --gamma "$gamma"
+  done
+}
+
 
 # merge in defaults and keymaps
 
@@ -37,9 +48,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-for d in HDMI-0 DVI-0; do
-  xrandr --output $d --brightness "$brightness" --gamma "$gamma"
-done
+configure_displays
 
 picom &
 exec qtile start
