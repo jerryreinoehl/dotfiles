@@ -5,6 +5,9 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
+brightness="0.73"
+gamma="1:0.9:0.82"
+
 export WINIT_X11_SCALE_FACTOR=1
 
 # merge in defaults and keymaps
@@ -33,6 +36,10 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  done
  unset f
 fi
+
+for d in HDMI-0 DVI-0; do
+  xrandr --output $d --brightness "$brightness" --gamma "$gamma"
+done
 
 picom &
 exec qtile start
