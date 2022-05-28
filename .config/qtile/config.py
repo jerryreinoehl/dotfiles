@@ -27,7 +27,17 @@
 from typing import List  # noqa: F401
 
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import (
+    Click,
+    Drag,
+    DropDown,
+    Group,
+    Key,
+    KeyChord,
+    Match,
+    ScratchPad,
+    Screen
+)
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -161,6 +171,8 @@ keys = [
     Key(["shift"], "XF86AudioRaiseVolume", PulseAudio.set_sink_volume("+5%")),
     Key(["shift"], "XF86AudioLowerVolume", PulseAudio.set_sink_volume("-5%")),
     Key([], "XF86AudioMute", PulseAudio.set_sink_mute()),
+
+    Key([mod], "comma", lazy.group["scratchpad"].dropdown_toggle("terminal")),
 ]
 
 
@@ -180,6 +192,10 @@ for i in groups:
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
             desc="move focused window to group {}".format(i.name)),
     ])
+
+groups.append(ScratchPad("scratchpad", [
+    DropDown("terminal", terminal),
+]))
 
 layouts = [
     layout.Columns(
