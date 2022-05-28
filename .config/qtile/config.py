@@ -41,6 +41,9 @@ from libqtile.config import (
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
+from lazyobj import lazyobj
+from pulseaudio import PulseAudio
+
 import os
 
 
@@ -62,24 +65,7 @@ mod = "mod4"
 terminal = guess_terminal()
 browser = "firefox"
 
-
-class PulseAudio():
-    @lazy.function
-    def set_sink_volume(qtile, volume="+1%"):
-        cmd = f"pactl set-sink-volume @DEFAULT_SINK@ {volume}".split()
-        qtile.cmd_spawn(cmd)
-
-    @lazy.function
-    def set_sink_mute(qtile, mute=None):
-        mute_arg = "toggle"
-
-        if mute == True:
-            mute_arg = "1"
-        elif mute == False:
-            mute_arg = "0"
-
-        cmd = f"pactl set-sink-mute @DEFAULT_SINK@ {mute_arg}".split()
-        qtile.cmd_spawn(cmd)
+pactl = lazyobj(PulseAudio)
 
 
 @lazy.function
@@ -168,11 +154,11 @@ keys = [
     Key([mod, "shift"], "m", increase_margin(), desc="Increase margin"),
 
     # Volume control.
-    Key([], "XF86AudioRaiseVolume", PulseAudio.set_sink_volume("+1%")),
-    Key([], "XF86AudioLowerVolume", PulseAudio.set_sink_volume("-1%")),
-    Key(["shift"], "XF86AudioRaiseVolume", PulseAudio.set_sink_volume("+5%")),
-    Key(["shift"], "XF86AudioLowerVolume", PulseAudio.set_sink_volume("-5%")),
-    Key([], "XF86AudioMute", PulseAudio.set_sink_mute()),
+    Key([], "XF86AudioRaiseVolume", pactl.set_sink_volume("+1%")),
+    Key([], "XF86AudioLowerVolume", pactl.set_sink_volume("-1%")),
+    Key(["shift"], "XF86AudioRaiseVolume", pactl.set_sink_volume("+5%")),
+    Key(["shift"], "XF86AudioLowerVolume", pactl.set_sink_volume("-5%")),
+    Key([], "XF86AudioMute", pactl.set_sink_mute()),
 
     Key([mod], "comma", lazy.group["scratchpad"].dropdown_toggle("terminal")),
 ]
