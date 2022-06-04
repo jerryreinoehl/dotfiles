@@ -120,4 +120,4 @@ vim.keymap.set("i", "jk", "<esc>")
 
 -- Highlight trailing whitespace.
 vim.api.nvim_set_hl(0, "TrailingWhitespace", {ctermfg="red"})
-vim.fn.matchadd("TrailingWhitespace", [[\s\+$]])
+vim.fn.matchadd("TrailingWhitespace", [[\v\s+$]])
