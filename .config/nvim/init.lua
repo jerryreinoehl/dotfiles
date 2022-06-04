@@ -37,7 +37,7 @@ vim.opt.showmatch = true
 -- Ignore case in search patterns. Also used when searching in the tags file.
 vim.opt.ignorecase = true
 
--- Override the `ignorecase` option if the search pattern contains upper case
+-- Override the `ignorecase` option if the search pattern contains uppercase
 -- characters.
 vim.opt.smartcase = true
 
@@ -45,9 +45,8 @@ vim.opt.smartcase = true
 -- `hl-Search` highlight group determines the highlighting.
 vim.opt.hlsearch = true
 
--- While typing a search command, show where the pattern, as it was typed so
--- far, matches. You can use CTRL-G and CTRL-T to move to the next or previous
--- match.
+-- While typing a search command show matches for the pattern as typed so
+-- far. You can use CTRL-G and CTRL-T to move to the next or previous match.
 vim.opt.incsearch = true
 
 -- Show (partial) command in the last line of the screen.
@@ -66,12 +65,10 @@ vim.opt.laststatus = 2
 -- commands that have not been typed.
 vim.opt.lazyredraw = true
 
--- filetype indent on
-
 -- Allow folds.
 vim.opt.foldenable = true
 
--- Folds are formed on lines with equal indent.
+-- Folds are formed on lines with equal indentation.
 vim.opt.foldmethod = "indent"
 
 -- Useful to see the difference between tabs and spaces and for trailing
@@ -79,7 +76,12 @@ vim.opt.foldmethod = "indent"
 vim.opt.list = true
 
 -- Strings to use in `list` mode.
-vim.opt.listchars = {tab = "| ", trail = "·", precedes = "<", extends = ">"}
+vim.opt.listchars = {
+  tab = "| ",
+  trail = "·",
+  precedes = "<",
+  extends = ">"
+}
 
 -- Time in milliseconds to wait for a mapped sequence to complete.
 vim.opt.timeoutlen = 500
@@ -108,7 +110,7 @@ vim.g.mapleader = [[\]]
 vim.keymap.set("n", "<leader><leader>", ":write<cr>", {desc = "Save buffer"})
 
 -- Run make.
-vim.keymap.set("n", "<leader>m", ":!make<cr>", {desc = "make"})
+vim.keymap.set("n", "<leader>m", ":!make<cr>", {desc = "Run make"})
 
 -- Navigate through wrapped lines.
 vim.keymap.set("n", "j", "gj")
@@ -122,5 +124,6 @@ vim.keymap.set("i", "jk", "<esc>")
 -- Highlight Groups
 -- ============================================================================
 
+-- Highlight trailing whitespace.
 vim.api.nvim_set_hl(0, "TrailingWhitespace", {ctermfg="red"})
 vim.fn.matchadd("TrailingWhitespace", [[\s\+$]])
