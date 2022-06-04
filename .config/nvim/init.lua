@@ -65,12 +65,6 @@ vim.opt.laststatus = 2
 -- commands that have not been typed.
 vim.opt.lazyredraw = true
 
--- Allow folds.
-vim.opt.foldenable = true
-
--- Folds are formed on lines with equal indentation.
-vim.opt.foldmethod = "indent"
-
 -- Useful to see the difference between tabs and spaces and for trailing
 -- whilespace. Further changed by the `listchars` option.
 vim.opt.list = true
