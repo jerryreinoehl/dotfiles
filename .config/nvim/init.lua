@@ -128,10 +128,10 @@ vim.fn.matchadd("TrailingWhitespace", [[\v\s+$]])
 -- ============================================================================
 
 local function restore_cursor()
-  local num_lines = vim.api.nvim_buf_line_count(0)
   -- `"` is the cursor position of the current buffer when last exited.
   -- {row, col}
   local last_pos = vim.api.nvim_buf_get_mark(0, [["]])
+  local num_lines = vim.api.nvim_buf_line_count(0)
 
   if last_pos[1] > num_lines then
     last_pos = {num_lines, 0}
