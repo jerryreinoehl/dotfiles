@@ -132,13 +132,12 @@ local function restore_cursor()
   -- `"` is the cursor position of the current buffer when last exited.
   -- {row, col}
   local last_pos = vim.api.nvim_buf_get_mark(0, [["]])
-  local new_pos = last_pos
 
   if last_pos[1] > num_lines then
-    new_pos = {num_lines, 0}
+    last_pos = {num_lines, 0}
   end
 
-  vim.api.nvim_win_set_cursor(0, new_pos)
+  vim.api.nvim_win_set_cursor(0, last_pos)
 end
 
 vim.api.nvim_create_autocmd({"BufReadPost"}, {callback = restore_cursor})
