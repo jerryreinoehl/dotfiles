@@ -1,12 +1,12 @@
 # ============================================================================
 # prompt.zsh
-# v1.1.0
+# v1.1.1
 # ============================================================================
 
 declare -A PSCFG
 PSCFG[version]="1.1.0"
 
-PSCFG[venv.color]="1;33"
+PSCFG[venv.color]="3;33"
 PSCFG[host.color]="1;32"
 PSCFG[dir.color]="1;34"
 PSCFG[prompt.color]="1"
