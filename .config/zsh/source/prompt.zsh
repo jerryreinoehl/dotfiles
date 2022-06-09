@@ -1,10 +1,10 @@
 # ============================================================================
 # prompt.zsh
-# v1.1.1
+# v2.0.0
 # ============================================================================
 
 declare -A PSCFG
-PSCFG[version]="1.1.0"
+PSCFG[version]="2.0.0"
 
 PSCFG[venv.color]="3;33"
 PSCFG[host.color]="1;32"
@@ -19,8 +19,11 @@ PSCFG[error.fmt]="[%s]"
 PSCFG[jobs.fmt]="*%s"
 PSCFG[vcs.fmt]="(%s)"
 
+PSCFG[cursor]="5"
+PSCFG[vicmd.cursor]="1"
+
 (( UID == 0 )) && PSCFG[prompt.fmt]="#" || PSCFG[prompt.fmt]=">"
-PSCFG[prompt.vicmd_fmt]=":"
+PSCFG[vicmd.prompt.fmt]=":"
 
 zle -N prompt-ps1 __prompt_ps1
 zle -N prompt-rps1 __prompt_rps1
@@ -29,11 +32,17 @@ zle -N zle-keymap-select
 # Redraws prompt when switching between vicmd and viins.
 zle-keymap-select() {
   local save_prompt="$PSCFG[prompt.fmt]"
+  local save_cursor="$PSCFG[cursor]"
 
-  [[ "$KEYMAP" == "vicmd" ]] && PSCFG[prompt.fmt]="$PSCFG[prompt.vicmd_fmt]"
+  [[ "$KEYMAP" == "vicmd" ]] \
+    && PSCFG[prompt.fmt]="$PSCFG[vicmd.prompt.fmt]" \
+    && PSCFG[cursor]="$PSCFG[vicmd.cursor]"
+
   zle prompt-ps1
   zle reset-prompt
+
   PSCFG[prompt.fmt]="$save_prompt"
+  PSCFG[cursor]="$save_cursor"
 }
 
 precmd_functions+=(__prompt)
@@ -62,6 +71,8 @@ __prompt_ps1() {
   PS1+=$'%{\e['$PSCFG[host.color]$'m%}%n@%m%{\e[0m%}'
   PS1+=$' %{\e['$PSCFG[dir.color]$'m%}%1~%{\e[0m%}'
   PS1+=" $prmpt "
+
+  __prompt_set_cursor "$PSCFG[cursor]"
 }
 
 # Sets `RPS1`.
@@ -155,4 +166,10 @@ __prompt_fmt_str() {
   local color="$1" fmt="$2" str="$3"
 
   REPLY=$'%{\e['$color'm%}'${fmt//\%s/$str}$'%{\e[0m%}'
+}
+
+# Echos the escape sequence to set the cursor.
+# $1 - cursor code (ex. "5").
+__prompt_set_cursor() {
+  echo -ne "\e[$1 q"
 }
