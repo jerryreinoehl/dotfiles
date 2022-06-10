@@ -9,9 +9,9 @@ class PulseAudio():
     def set_sink_mute(self, mute=None, sink="@DEFAULT_SINK@"):
         mute_arg = "toggle"
 
-        if mute == True:
+        if mute is True:
             mute_arg = "1"
-        elif mute == False:
+        elif mute is False:
             mute_arg = "0"
 
         cmd = f"pactl set-sink-mute {sink} {mute_arg}".split()
