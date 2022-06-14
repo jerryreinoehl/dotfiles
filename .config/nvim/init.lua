@@ -40,6 +40,10 @@ vim.opt.autowrite = true
 -- Display line numbers.
 vim.opt.number = true
 
+-- Show the line number relative to the line with the cursor in front of each
+-- line.
+vim.opt.relativenumber = true
+
 -- Highlight the text line of the cursor with CursorLine `hl-CursorLine`.
 vim.opt.cursorline = true
 
