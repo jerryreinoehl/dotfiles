@@ -1,0 +1,111 @@
+#!/bin/bash
+# =============================================================================
+# dots
+#
+# usage: dots [allyesconfig | allnoconfig | install]
+#
+# Install dotfiles.
+#
+# options:
+#   allyesconfig    Generate config with all options enabled.
+#   allnoconfig     Generate config with all options disabled.
+#   install         Install dotfiles.
+#
+# =============================================================================
+
+
+declare -A configs
+
+# Maps each config key to a `:` separated list of paths to install.
+configs=(
+  [ALACRITTY]=".config/alacritty/"
+  [ALIASES]=".config/aliases"
+  [BASH]=".bashrc"
+  [DIRCOLORS]=".dircolors"
+  [FONTCONFIG]=".config/fontconfig/"
+  [GIT]=".config/git/"
+  [GNUPG]=".config/gnupg/"
+  [LIBVIRT]=".config/libvirt/"
+  [LOCAL]=".local/"
+  [NVIM]=".config/nvim/"
+  [PICOM]=".config/picom/"
+  [QTILE]=".config/qtile/"
+  [TMUX]=".config/tmux/"
+  [VIM]=".vim/"
+  [X]=".xinitrc:.Xmodmap"
+  [ZATHURA]=".config/zathura/"
+  [ZSH]=".zshenv:.config/zsh/"
+)
+
+# Path to config file.
+config="./config"
+
+
+main() {
+  case "$1" in
+    allyesconfig) genconfig 1 > "$config" ;;
+    allnoconfig) genconfig 0 > "$config" ;;
+    install) install_dotfiles "$config" "$HOME" ;;
+    *) help ;;
+  esac
+}
+
+
+# Print help message.
+help() {
+  cat << EOF
+usage: $0 [allyesconfig | allnoconfig | install]
+
+Install dotfiles.
+
+options:
+  allyesconfig    Generate config with all options enabled.
+  allnoconfig     Generate config with all options disabled.
+  install         Install dotfiles.
+EOF
+}
+
+
+# Generates a config file for install.
+#   $1 - Set to `1` to enable all options, `0` to disable.
+genconfig() {
+  local -i allyes="${1:-0}"
+  local contents=""
+
+  for key in "${!configs[@]}"; do
+    (( ! allyes )) && contents+="#"
+    contents+="$key\n"
+  done
+
+  # Remove extra newline
+  contents="${contents%%\\n}"
+
+  echo -e $contents | sort
+}
+
+
+# Installs dotfiles specified in config file.
+#   $1 - Config file. Default is `config`.
+#   $2 - Destination. Default is `$HOME`.
+install_dotfiles() {
+  local config="${1:-config}"
+  local dest="${2:-$HOME}"
+  local IFS=":"
+
+  [[ ! -r "$config" ]] && echo "Error: '$config' not found" >&2 && return 1
+
+  while read -r key; do
+    [[ "${key:0:1}" == "#" ]] && continue
+
+    [[ -z "${configs[$key]}" ]] && echo "Error: '$key' not found" >&2 && continue
+
+    if [[ -n ${configs["$key"]} ]]; then
+      for path in ${configs["$key"]}; do
+        cp -rpvT "$path" "$dest/$path"
+      done
+    fi
+  done < "$config"
+}
+
+
+main "$@"
