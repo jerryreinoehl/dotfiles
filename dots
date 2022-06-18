@@ -136,12 +136,12 @@ install_dotfiles() {
   for key in "${keys[@]}"; do
     key="${key^^}"
 
-    echo -e "\e[1;32m==>\e[0m Installing $key"
-
     [[ -z "${configs[$key]}" ]] \
       && echo -e "\e[1;31mError: '$key' not found\e[0m" >&2 \
       && rc=1 \
       && continue
+
+    echo -e "\e[1;32m==>\e[0m Installing $key"
 
     for path in ${configs["$key"]}; do
       cp -rpT "$path" "$dest/$path"
