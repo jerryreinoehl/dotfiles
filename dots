@@ -99,9 +99,11 @@ install_dotfiles() {
 
     [[ -z "${configs[$key]}" ]] && echo "Error: '$key' not found" >&2 && continue
 
+    echo "Installing $key"
+
     if [[ -n ${configs["$key"]} ]]; then
       for path in ${configs["$key"]}; do
-        cp -rpvT "$path" "$dest/$path"
+        cp -rpT "$path" "$dest/$path"
       done
     fi
   done < "$config"
