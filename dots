@@ -2,14 +2,18 @@
 # =============================================================================
 # dots
 #
-# usage: dots [allyesconfig | allnoconfig | install]
+# usage: dots [--allyesconfig | --allnoconfig | --install [keys ... ]]
 #
 # Install dotfiles.
 #
+# positional arguments:
+#   keys                  List of configs to install. If no keys are given then
+#                         read keys from config file.
+#
 # options:
-#   allyesconfig    Generate config with all options enabled.
-#   allnoconfig     Generate config with all options disabled.
-#   install         Install dotfiles.
+#   -y, --allyesconfig    Generate config with all options enabled.
+#   -n, --allnoconfig     Generate config with all options disabled.
+#   -i, --install         Install dotfiles.
 #
 # =============================================================================
 
@@ -42,26 +46,44 @@ config="./config"
 
 
 main() {
+  local keys
+  local -i should_install=0
+  local REPLY
+
   case "$1" in
-    allyesconfig) genconfig 1 > "$config" ;;
-    allnoconfig) genconfig 0 > "$config" ;;
-    install) install_dotfiles "$config" "$HOME" ;;
+    -y|--allyesconfig) genconfig 1 > "$config" ;;
+    -n|--allnoconfig) genconfig 0 > "$config" ;;
+    -i|--install) should_install=1 ;;
     *) help ;;
   esac
+
+  (( ! should_install )) && return
+
+  shift
+  keys=($@)
+
+  # If no keys passed, read from config.
+  (( ${#keys} == 0 )) && read_config_keys "$config" && keys=("${REPLY[@]}")
+
+  install_dotfiles "${keys[@]}" || return 1
 }
 
 
 # Print help message.
 help() {
   cat << EOF
-usage: $0 [allyesconfig | allnoconfig | install]
+usage: $0 [--allyesconfig | --allnoconfig | --install [keys ... ]]
 
 Install dotfiles.
 
+positional arguments:
+  keys                  List of configs to install. If no keys are given then
+                        read keys from config file.
+
 options:
-  allyesconfig    Generate config with all options enabled.
-  allnoconfig     Generate config with all options disabled.
-  install         Install dotfiles.
+  -y, --allyesconfig    Generate config with all options enabled.
+  -n, --allnoconfig     Generate config with all options disabled.
+  -i, --install         Install dotfiles.
 EOF
 }
 
@@ -84,29 +106,49 @@ genconfig() {
 }
 
 
-# Installs dotfiles specified in config file.
-#   $1 - Config file. Default is `config`.
-#   $2 - Destination. Default is `$HOME`.
-install_dotfiles() {
+# Reads config keys from config file and returns keys in ${REPLY[@]}.
+#   $1 - Path of config file. Defaults to `config`.
+read_config_keys() {
   local config="${1:-config}"
-  local dest="${2:-$HOME}"
-  local IFS=":"
+  local -a keys
 
-  [[ ! -r "$config" ]] && echo "Error: '$config' not found" >&2 && return 1
+  [[ ! -r "$config" ]] \
+    && echo -e "\e[1;31mError: '$config' not found\e[0m" >&2 \
+    && exit 1
 
   while read -r key; do
     [[ "${key:0:1}" == "#" ]] && continue
-
-    [[ -z "${configs[$key]}" ]] && echo "Error: '$key' not found" >&2 && continue
-
-    echo "Installing $key"
-
-    if [[ -n ${configs["$key"]} ]]; then
-      for path in ${configs["$key"]}; do
-        cp -rpT "$path" "$dest/$path"
-      done
-    fi
+    keys+=("$key")
   done < "$config"
+
+  REPLY=("${keys[@]}")
+}
+
+
+# Installs dotfiles.
+#   $@ - List of config keys to install.
+install_dotfiles() {
+  local dest="$HOME"
+  local keys=($@)
+  local -i rc=0
+  local IFS=":"
+
+  for key in "${keys[@]}"; do
+    key="${key^^}"
+
+    echo -e "\e[1;32m==>\e[0m Installing $key"
+
+    [[ -z "${configs[$key]}" ]] \
+      && echo -e "\e[1;31mError: '$key' not found\e[0m" >&2 \
+      && rc=1 \
+      && continue
+
+    for path in ${configs["$key"]}; do
+      cp -rpT "$path" "$dest/$path"
+    done
+  done
+
+  return $rc
 }
 
 
