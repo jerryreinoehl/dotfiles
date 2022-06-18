@@ -110,4 +110,4 @@ install_dotfiles() {
 }
 
 
-main "$@"
+main $@
