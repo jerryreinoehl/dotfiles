@@ -69,19 +69,15 @@ pactl = lazyobj(PulseAudio)
 
 
 @lazy.function
-def increase_margin(qtile, step=5):
-    qtile.current_layout.margin += step
+def increase_margin(qtile, step=5, max_margin=100):
+    margin = min(qtile.current_layout.margin + step, max_margin)
+    qtile.current_layout.margin = margin
     qtile.current_layout.group.layout_all()
 
 @lazy.function
-def decrease_margin(qtile, step=5):
-    current_margin = qtile.current_layout.margin
-    current_margin -= step
-
-    if current_margin < 0:
-        current_margin = 0
-
-    qtile.current_layout.margin = current_margin
+def decrease_margin(qtile, step=5, min_margin=0):
+    margin = max(qtile.current_layout.margin - step, min_margin)
+    qtile.current_layout.margin = margin
     qtile.current_layout.group.layout_all()
 
 
