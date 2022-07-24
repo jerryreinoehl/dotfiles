@@ -2,14 +2,14 @@
 -- Plugins
 -- ============================================================================
 
-require("nvimtmuxnav").setup({
+require("nvimtmuxnav").setup {
   keybindings = {
     left = "<C-e>h",
     down = "<C-e>j",
     up = "<C-e>k",
     right = "<C-e>l",
   }
-})
+}
 
 require("colors")
 
