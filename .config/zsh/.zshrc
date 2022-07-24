@@ -5,10 +5,10 @@ setopt COMPLETE_ALIASES
 KEYTIMEOUT=15
 bindkey -v # Set vi keymap
 bindkey -M viins 'jk' vi-cmd-mode
-bindkey -M viins '^?' backward-delete-char
-bindkey -M viins '^H' backward-kill-word
-bindkey '^P' up-history
-bindkey '^N' down-history
+bindkey -M viins '^?' backward-delete-char  # Backspace
+bindkey -M viins '^H' backward-kill-word    # Ctrl-Backspace
+bindkey '^P' up-history                     # Ctrl-p
+bindkey '^N' down-history                   # Ctrl-n
 
 # Enable command completion
 autoload -Uz compinit
