@@ -133,6 +133,9 @@ vim.keymap.set("n", "k", "gk")
 -- "jk" to escape.
 vim.keymap.set("i", "jk", "<esc>")
 
+-- Ctrl-Backspace to backward-kill-word.
+vim.keymap.set("i", "<C-H>", "<C-W>")
+
 
 -- ============================================================================
 -- Highlight Groups
