@@ -6,6 +6,7 @@ KEYTIMEOUT=15
 bindkey -v # Set vi keymap
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-kill-word
 bindkey '^P' up-history
 bindkey '^N' down-history
 
