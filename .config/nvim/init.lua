@@ -126,6 +126,21 @@ vim.keymap.set("n", "<leader><leader>", ":write<cr>", {desc = "Save buffer"})
 -- Run make.
 vim.keymap.set("n", "<leader>m", ":!make<cr>", {desc = "Run make"})
 
+-- Set `textwidth`.
+vim.keymap.set("n", "<leader>w", function ()
+  local textwidth = 0
+
+  if vim.v.count ~= 0 then
+    textwidth = vim.v.count
+  elseif vim.api.nvim_buf_get_option(0, "textwidth") == 0 then
+    textwidth = 79
+  end
+
+  vim.api.nvim_buf_set_option(0, "textwidth", textwidth)
+
+  print("textwidth=" .. textwidth)
+end, {desc = "Set textwidth"})
+
 -- Navigate through wrapped lines.
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
