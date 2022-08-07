@@ -126,6 +126,20 @@ vim.keymap.set("n", "<leader><leader>", ":write<cr>", {desc = "Save buffer"})
 -- Run make.
 vim.keymap.set("n", "<leader>m", ":!make<cr>", {desc = "Run make"})
 
+-- Reload config.
+vim.keymap.set("n", "<leader>r", function()
+  local config = vim.fn.expand("$MYVIMRC")
+  local hlsearch = vim.v.hlsearch
+
+  vim.cmd("luafile " .. config)
+
+  if hlsearch == 0 then
+    vim.cmd("nohlsearch")
+  end
+
+  print(config)
+end, {desc = "Reload config"})
+
 -- Set `textwidth`.
 vim.keymap.set("n", "<leader>w", function ()
   local textwidth = 0
