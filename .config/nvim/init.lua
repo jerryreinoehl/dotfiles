@@ -123,6 +123,16 @@ vim.g.mapleader = [[\]]
 -- Save buffer.
 vim.keymap.set("n", "<leader><leader>", ":write<cr>", {desc = "Save buffer"})
 
+-- Toggle hlsearch.
+vim.keymap.set("n", "<leader>h", function()
+  local hlsearch = vim.v.hlsearch
+  if hlsearch == 1 then
+    vim.cmd("nohlsearch")
+  else
+    vim.opt.hlsearch = true
+  end
+end, {desc = "Toggle hlsearch"})
+
 -- Run make.
 vim.keymap.set("n", "<leader>m", ":!make<cr>", {desc = "Run make"})
 
