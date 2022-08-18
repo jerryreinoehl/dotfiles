@@ -175,6 +175,12 @@ vim.keymap.set("i", "jk", "<esc>")
 -- Ctrl-Backspace to backward-kill-word.
 vim.keymap.set("i", "<C-H>", "<C-W>")
 
+-- Autocomplete braces.
+vim.keymap.set("i", "{J", "{<CR>}<ESC>O", {desc = "Autocomplete braces"})
+
+-- Autocomplete parentheses.
+vim.keymap.set("i", "(J", "(<CR>)<ESC>O", {desc = "Autocomplete parentheses"})
+
 
 -- ============================================================================
 -- Highlight Groups
