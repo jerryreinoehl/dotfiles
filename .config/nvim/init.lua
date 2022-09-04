@@ -115,6 +115,9 @@ vim.opt.scrolloff = 99999
 -- Set how automatic formatting is done. See `:help fo-table`.
 vim.opt.formatoptions = "tcrqljp"
 
+-- Set the default listing style to tree style listing.
+vim.g.netrw_liststyle = 3
+
 
 -- ============================================================================
 -- Key Bindings
