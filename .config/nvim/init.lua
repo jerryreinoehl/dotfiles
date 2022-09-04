@@ -78,6 +78,9 @@ vim.opt.showcmd = true
 -- highlights the current match.
 vim.opt.wildmenu = true
 
+-- Completion mode that is used for the character specified with `wildchar`.
+vim.opt.wildmode = {"longest", "full"}
+
 -- Set the last window to always have a status line.
 vim.opt.laststatus = 2
 
