@@ -6,3 +6,14 @@
 	rebase = true
 
 [color]
+
+[alias]
+	a = add
+	ap = add -p
+	b = branch
+	c = commit
+	co = checkout
+	d = diff
+	dc = diff --cached
+	l = log
+	s = status
