@@ -12,6 +12,8 @@
 	ap = add -p
 	b = branch
 	c = commit
+	cam = commit -am
+	cm = commit -m
 	co = checkout
 	cob = checkout -b
 	d = diff
