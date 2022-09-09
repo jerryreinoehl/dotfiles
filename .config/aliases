@@ -53,6 +53,7 @@ alias update='sudo apt -y update && sudo apt -y upgrade && apt moo'
 # ----------------------------------------------------------------------------
 # misc
 # ----------------------------------------------------------------------------
+alias g='git'
 alias less='less -FRX'
 alias ip='__alias_ip'
 alias tree='tree -C'
