@@ -9,18 +9,33 @@
 
 [alias]
 	a = add
-	ap = add -p
+	ae = add --edit
+	ap = add --patch
 	b = branch
 	c = commit
-	cam = commit -am
+	cam = commit --all -m
+	cav = commit --all --verbose
 	cm = commit -m
 	co = checkout
 	cob = checkout -b
+	cv = commit -v
 	d = diff
 	dc = diff --cached
 	f = fetch
 	l = log
-	lp = log -p
+	l1 = log --oneline
+	ll = log --decorate --patch
+	lp = log --patch
+	o = remote
+	oo = remote show origin
+	os = remote show
 	p = pull
 	pp = push
+	r = reset
 	s = status
+	sh = show
+	t = tag
+	tam = tag --annotate -m
+	td = tag --delete
+	tl = tag --list
+	tm = tag -m
