@@ -18,7 +18,7 @@
 	cm = commit -m
 	co = checkout
 	cob = checkout -b
-	cv = commit -v
+	cv = commit --verbose
 	d = diff
 	dc = diff --cached
 	f = fetch
@@ -29,8 +29,11 @@
 	o = remote
 	oo = remote show origin
 	os = remote show
-	p = pull
-	pp = push
+	p = push
+	pf = push --follow-tags
+	pod = push origin --delete
+	ps = push -o ci.skip
+	pt = push --tags
 	r = reset
 	s = status
 	sh = show
@@ -39,3 +42,5 @@
 	td = tag --delete
 	tl = tag --list
 	tm = tag -m
+	y = pull
+	yr = pull --rebase
