@@ -1,6 +1,5 @@
 setopt extendedglob
 setopt histignorealldups
-setopt COMPLETE_ALIASES
 
 KEYTIMEOUT=15
 bindkey -v # Set vi keymap
