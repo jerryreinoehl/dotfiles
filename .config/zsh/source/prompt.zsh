@@ -1,10 +1,10 @@
 # ============================================================================
 # prompt.zsh
-# v2.0.0
+# v2.1.0
 # ============================================================================
 
 declare -A PSCFG
-PSCFG[version]="2.0.0"
+PSCFG[version]="2.1.0"
 
 PSCFG[venv.color]="3;33"
 PSCFG[host.color]="1;32"
@@ -24,6 +24,7 @@ PSCFG[vicmd.prompt.fmt]=":"
 
 PSCFG[cursor]="5"
 PSCFG[vicmd.cursor]="1"
+PSCFG[preexec.cursor]="1"
 
 zle -N prompt-ps1 __prompt_ps1
 zle -N prompt-rps1 __prompt_rps1
@@ -46,6 +47,7 @@ zle-keymap-select() {
 }
 
 precmd_functions+=(__prompt)
+preexec_functions+=(__prompt_preexec)
 
 # Prompt entry point. Sets `PS1` and `RPS1`.
 __prompt() {
@@ -156,6 +158,12 @@ __prompt_git_head() {
     [[ -r "$dir/.git/HEAD" ]] && REPLY="$dir/.git/HEAD" && return
     dir="${dir%/*}"
   done
+}
+
+# Called in `preexec_functions` before a command is executed.
+__prompt_preexec() {
+  [[ -n "$PSCFG[preexec.cursor]" ]] \
+    && __prompt_set_cursor "$PSCFG[preexec.cursor]"
 }
 
 # Returns string formatted for `PS1` or `RPS1` in `REPLY`.
