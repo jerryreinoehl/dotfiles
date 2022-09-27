@@ -12,6 +12,8 @@
 	ae = add --edit
 	ap = add --patch
 	b = branch
+	ba = branch --all
+	bd = branch --delete
 	c = commit
 	cam = commit --all -m
 	cav = commit --all --verbose
