@@ -17,6 +17,7 @@
 	c = commit
 	cam = commit --all -m
 	cav = commit --all --verbose
+	cl = clone
 	cm = commit -m
 	co = checkout
 	cob = checkout -b
@@ -33,6 +34,7 @@
 	os = remote show
 	p = push
 	pf = push --follow-tags
+	po = push origin
 	pod = push origin --delete
 	ps = push -o ci.skip
 	pt = push --tags
