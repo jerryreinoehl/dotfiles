@@ -36,7 +36,7 @@ configs=(
   [QTILE]=".config/qtile/"
   [TMUX]=".config/tmux/"
   [VIM]=".vim/"
-  [X]=".xinitrc:.Xmodmap"
+  [X]=".xinitrc:.Xmodmap:.Xresources"
   [ZATHURA]=".config/zathura/"
   [ZSH]=".zshenv:.config/zsh/"
 )
