@@ -14,6 +14,7 @@
 	b = branch
 	ba = branch --all
 	bd = branch --delete
+	bf = branch --force
 	c = commit
 	cam = commit --all -m
 	cav = commit --all --verbose
