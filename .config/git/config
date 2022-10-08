@@ -29,6 +29,7 @@
 	dc = diff --cached
 	dd = diff --cached
 	f = fetch
+	j = cherry-pick
 	k = checkout
 	kk = checkout -b
 	l = log
@@ -41,6 +42,8 @@
 	llg = log --all --graph
 	llp = log --all --patch
 	lp = log --patch
+	m = merge
+	mm = rebase
 	o = remote
 	oo = remote show origin
 	os = remote show
