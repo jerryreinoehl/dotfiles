@@ -55,6 +55,7 @@ alias update='sudo apt -y update && sudo apt -y upgrade && apt moo'
 # ----------------------------------------------------------------------------
 alias g='git'
 alias less='less -FRX'
+alias i='sxiv'
 alias ip='__alias_ip'
 alias tree='tree -C'
 alias v="${VISUAL:-vim}"
