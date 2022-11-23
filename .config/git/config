@@ -45,6 +45,7 @@
 	m = merge
 	mm = rebase
 	o = remote
+	oa = remote add
 	oo = remote show origin
 	os = remote show
 	p = push
@@ -53,6 +54,8 @@
 	pod = push origin --delete
 	ps = push -o ci.skip
 	pt = push --tags
+	pu = push --set-upstream
+	puo = push --set-upstream origin
 	r = reset
 	s = status
 	sh = show
