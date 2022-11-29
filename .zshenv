@@ -15,6 +15,8 @@ export SAVEHIST=100000
 
 export ANSIBLE_STDOUT_CALLBACK='debug'
 
+export IMAGE_VIEWER='sxiv'
+
 export VIM_TMUX_NAV=1
 
 for editor in nvim vim vi; do
