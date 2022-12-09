@@ -128,6 +128,17 @@ vim.g.mapleader = [[\]]
 -- Save buffer.
 vim.keymap.set("n", "<leader><leader>", ":write<cr>", {desc = "Save buffer"})
 
+-- Save buffer and quit.
+vim.keymap.set("n", "<leader>x", vim.cmd.exit, {desc = "Save and quit"})
+
+-- Quit.
+vim.keymap.set("n", "<leader>q", vim.cmd.quit, {desc = "Quit"})
+
+-- Force quit.
+vim.keymap.set("n", "<leader>Q", function()
+  vim.cmd.quit { bang = true }
+end, {desc = "Force quit"})
+
 -- Toggle hlsearch.
 vim.keymap.set("n", "<leader>h", function()
   local hlsearch = vim.v.hlsearch
