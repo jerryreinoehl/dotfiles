@@ -166,6 +166,9 @@ vim.keymap.set("n", "<leader>r", function()
   print(config)
 end, {desc = "Reload config"})
 
+-- Sort selection
+vim.keymap.set("v", "<leader>s", ":sort<CR><ESC>", {desc = "Sort selection"})
+
 -- Set `textwidth`.
 vim.keymap.set("n", "<leader>w", function ()
   local textwidth = 0
