@@ -185,11 +185,11 @@ groups.append(ScratchPad("scratchpad", [
 
 layouts = [
     layout.Columns(
-        border_width=2,
+        border_width=0,
         border_on_single=True,
         border_normal="#00111a",
         border_focus="#00aaff",
-        margin=5,
+        margin=0,
     ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
