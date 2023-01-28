@@ -82,7 +82,7 @@ def decrease_margin(qtile, step=5, min_margin=0):
 
 
 keys = [
-    KeyChord([mod], "g", [], mode="command"),
+    KeyChord([mod], "g", [], name="command"),
 
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
