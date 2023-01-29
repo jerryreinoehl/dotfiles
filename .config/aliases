@@ -62,6 +62,7 @@ fi
 # misc
 # ----------------------------------------------------------------------------
 alias g='git'
+alias helgrind='valgrind --tool=helgrind'
 alias less='less -FRX'
 alias i="${IMAGE_VIEWER:-sxiv}"
 alias ip='__alias_ip'
