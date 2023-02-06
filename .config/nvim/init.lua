@@ -13,6 +13,10 @@ require("nvimtmuxnav").setup {
 
 require("colors")
 
+require("github-theme").setup {
+  transparent = true
+}
+
 
 -- ============================================================================
 -- Options
