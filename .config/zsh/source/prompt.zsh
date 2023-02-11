@@ -1,25 +1,27 @@
 # ============================================================================
 # prompt.zsh
-# v2.1.0
+# v2.2.0
 # ============================================================================
 
 declare -A PSCFG
-PSCFG[version]="2.1.0"
+PSCFG[version]="2.2.0"
 
 PSCFG[venv.color]="3;33"
 PSCFG[host.color]="1;32"
 PSCFG[dir.color]="1;34"
+PSCFG[dir.ro.color]="1;2;3;34"
 PSCFG[prompt.color]="1"
 PSCFG[error.color]="1;31"
 PSCFG[jobs.color]="1;2;37"
 PSCFG[vcs.color]="1;35"
 
 PSCFG[venv.fmt]="(%s)"
+PSCFG[prompt.fmt]=">"
 PSCFG[error.fmt]="[%s]"
 PSCFG[jobs.fmt]="*%s"
 PSCFG[vcs.fmt]="(%s)"
 
-(( UID == 0 )) && PSCFG[prompt.fmt]="#" || PSCFG[prompt.fmt]=">"
+(( UID == 0 )) && PSCFG[host.color]="1;31" && PSCFG[prompt.fmt]="#"
 PSCFG[vicmd.prompt.fmt]=":"
 
 PSCFG[cursor]="5"
@@ -63,15 +65,19 @@ __prompt() {
 
 # Sets `PS1`.
 __prompt_ps1() {
-  local venv prmpt REPLY
+  local venv prmpt dir_color REPLY
 
-  [[ -n "$PSCFG[venv.fmt]" ]] && __prompt_venv; venv="$REPLY"
+  [[ -n "$PSCFG[venv.fmt]" ]] && __prompt_venv && venv="$REPLY"
   __prompt_prompt; prmpt="$REPLY"
+
+  [[ -w . ]] \
+    && dir_color="$PSCFG[dir.color]" \
+    || dir_color="$PSCFG[dir.ro.color]"
 
   PS1=""
   [[ -n "$venv" ]] && PS1+="$venv "
   PS1+=$'%{\e['$PSCFG[host.color]$'m%}%n@%m%{\e[0m%}'
-  PS1+=$' %{\e['$PSCFG[dir.color]$'m%}%1~%{\e[0m%}'
+  PS1+=$' %{\e['$dir_color$'m%}%1~%{\e[0m%}'
   PS1+=" $prmpt "
 
   __prompt_set_cursor "$PSCFG[cursor]"
@@ -81,9 +87,9 @@ __prompt_ps1() {
 __prompt_rps1() {
   local vcs error bgjobs REPLY
 
-  [[ -n "$PSCFG[error.fmt]" ]] && __prompt_error; error="$REPLY"
-  [[ -n "$PSCFG[jobs.fmt]" ]] && __prompt_jobs; bgjobs="$REPLY"
-  [[ -n "$PSCFG[vcs.fmt]" ]] && __prompt_vcs; vcs="$REPLY"
+  [[ -n "$PSCFG[error.fmt]" ]] && __prompt_error && error="$REPLY"
+  [[ -n "$PSCFG[jobs.fmt]" ]] && __prompt_jobs && bgjobs="$REPLY"
+  [[ -n "$PSCFG[vcs.fmt]" ]] && __prompt_vcs && vcs="$REPLY"
 
   RPS1=""
   [[ -n "$error" ]] && RPS1+="$error"
