@@ -83,7 +83,7 @@ def decrease_margin(qtile, step=5, min_margin=0):
 
 keys = [
     KeyChord([mod], "g", [
-        Key([], "l", lazy.ungrab_all_chords(), lazy.spawn("systemctl suspend")),
+        Key([], "l", lazy.spawn("systemctl suspend")),
     ], name="command"),
 
     # Switch between windows
