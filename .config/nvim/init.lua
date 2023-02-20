@@ -13,10 +13,6 @@ require("nvimtmuxnav").setup {
 
 require("colors")
 
-require("github-theme").setup {
-  transparent = true
-}
-
 
 -- ============================================================================
 -- Options
@@ -81,8 +77,8 @@ vim.opt.wildmenu = true
 -- Completion mode that is used for the character specified with `wildchar`.
 vim.opt.wildmode = {"longest", "full"}
 
--- Set the last window to always have a status line.
-vim.opt.laststatus = 2
+-- Only show status line if there are at least two windows.
+vim.opt.laststatus = 1
 
 -- The screen will not be redrawn while executing macros, registers, and other
 -- commands that have not been typed.
@@ -117,6 +113,9 @@ vim.opt.formatoptions = "tcrqljp"
 
 -- Disable mouse
 vim.opt.mouse = ""
+
+-- Enable 24-bit RGB color.
+vim.opt.termguicolors = true
 
 -- Set the default listing style to tree style listing.
 vim.g.netrw_liststyle = 3
@@ -208,6 +207,14 @@ vim.keymap.set("i", "(J", "(<CR>)<ESC>O", {desc = "Autocomplete parentheses"})
 -- ============================================================================
 -- Highlight Groups
 -- ============================================================================
+
+vim.g.onedark_terminal_italics = 1
+vim.cmd.colorscheme("onedark")
+
+-- Turn off guibg
+local hl = vim.api.nvim_get_hl_by_name("Normal", {})
+hl["background"] = nil
+vim.api.nvim_set_hl(0, "Normal", hl)
 
 -- Highlight trailing whitespace.
 vim.api.nvim_set_hl(0, "TrailingWhitespace", {ctermfg = "red", fg = "red"})
