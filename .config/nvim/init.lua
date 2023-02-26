@@ -11,6 +11,7 @@ require("nvimtmuxnav").setup {
   }
 }
 
+-- navarasu/onedark.nvim
 require("onedark").setup {
   -- Choose between "dark", "darker", "cool", "deep", "warm", "warmer", and
   -- "light"
