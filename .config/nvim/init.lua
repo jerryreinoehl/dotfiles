@@ -17,6 +17,11 @@ require("onedark").setup {
   -- "light"
   style = "dark",
   transparent = true, -- Show/hide background
+
+  diagnostics = {
+    darker = false,
+    background = false,
+  }
 }
 require("onedark").load()
 
