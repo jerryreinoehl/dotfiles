@@ -11,7 +11,13 @@ require("nvimtmuxnav").setup {
   }
 }
 
-require("colors")
+require("onedark").setup {
+  -- Choose between "dark", "darker", "cool", "deep", "warm", "warmer", and
+  -- "light"
+  style = "dark",
+  transparent = true, -- Show/hide background
+}
+require("onedark").load()
 
 
 -- ============================================================================
@@ -207,14 +213,6 @@ vim.keymap.set("i", "(J", "(<CR>)<ESC>O", {desc = "Autocomplete parentheses"})
 -- ============================================================================
 -- Highlight Groups
 -- ============================================================================
-
-vim.g.onedark_terminal_italics = 1
-vim.cmd.colorscheme("onedark")
-
--- Turn off guibg
-local hl = vim.api.nvim_get_hl_by_name("Normal", {})
-hl["background"] = nil
-vim.api.nvim_set_hl(0, "Normal", hl)
 
 -- Highlight trailing whitespace.
 vim.api.nvim_set_hl(0, "TrailingWhitespace", {ctermfg = "red", fg = "red"})
