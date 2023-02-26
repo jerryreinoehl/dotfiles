@@ -203,6 +203,10 @@ end, {desc = "Set textwidth"})
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 
+-- LSP bindings.
+vim.keymap.set("n", "K", vim.lsp.buf.hover, {desc = "Hover"})
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, {desc = "Goto definition"})
+
 -- "jk" to escape.
 vim.keymap.set("i", "jk", "<esc>")
 
