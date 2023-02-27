@@ -129,6 +129,9 @@ vim.opt.mouse = ""
 -- Enable 24-bit RGB color.
 vim.opt.termguicolors = true
 
+-- Save undo history.
+vim.opt.undofile = true
+
 -- Set the default listing style to tree style listing.
 vim.g.netrw_liststyle = 3
 
