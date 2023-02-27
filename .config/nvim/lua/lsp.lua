@@ -64,7 +64,7 @@ local defaults = {
 }
 
 local function is_valid_cmd(cmd)
-  return vim.fn.executable(cmd[1])
+  return vim.fn.executable(cmd[1]) == 1
 end
 
 local function root_dir(pat)
@@ -77,7 +77,7 @@ function M.setup(lsp_config)
     lsp_config = {cmd = {lsp_config}}
   end
 
-  if not lsp_config or is_valid_cmd(lsp_config.cmd) == 0 then
+  if not lsp_config or not is_valid_cmd(lsp_config.cmd) then
     return
   end
 
