@@ -1,7 +1,7 @@
 -- ============================================================================
 -- lsp.lua
 --
--- LSP configuration helper.
+-- LSP Configuration Helper.
 --
 -- ### Quick setup:
 --
