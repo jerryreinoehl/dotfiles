@@ -68,3 +68,4 @@
 	y = pull
 	yr = pull --rebase
 	yy = pull --rebase
+	yyy = clone
