@@ -253,7 +253,11 @@ vim.api.nvim_create_autocmd({"BufReadPost"}, {callback = restore_cursor})
 vim.api.nvim_create_autocmd({"LspAttach"}, {
   callback = function()
     -- LSP bindings.
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, {desc = "Hover"})
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {desc = "Goto definition"})
+    vim.keymap.set(
+      "n", "K", vim.lsp.buf.hover, {buffer = true, desc = "Hover"}
+    )
+    vim.keymap.set(
+      "n", "gd", vim.lsp.buf.definition, {buffer = true, desc = "Go to definition"}
+    )
   end
 })
