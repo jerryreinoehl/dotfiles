@@ -206,6 +206,10 @@ end, {desc = "Set textwidth"})
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 
+-- Navigate tabs
+vim.keymap.set("n", "<C-n>", vim.cmd.tabnext, {desc = "Go to next tab"})
+vim.keymap.set("n", "<C-p>", vim.cmd.tabprev, {desc = "Go to previous tab"})
+
 -- "jk" to escape.
 vim.keymap.set("i", "jk", "<esc>")
 
