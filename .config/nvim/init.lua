@@ -168,7 +168,7 @@ vim.keymap.set("n", "<leader>h", function()
 end, {desc = "Toggle hlsearch"})
 
 -- Run make.
-vim.keymap.set("n", "<leader>m", ":!make<cr>", {desc = "Run make"})
+vim.keymap.set("n", "<leader>m", ":make<cr>", {desc = "Run make"})
 
 -- Reload config.
 vim.keymap.set("n", "<leader>r", function()
