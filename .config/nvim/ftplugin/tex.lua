@@ -30,3 +30,10 @@ require("lsp").setup {
     },
   },
 }
+
+vim.bo.makeprg = "latexmk -pdf -interaction=nonstopmode -synctex=1 %"
+
+vim.keymap.set("n", "<leader>z", function()
+  local cmd = {"zathura", "--fork", vim.fn.expand("%:r") .. ".pdf"}
+  os.execute(table.concat(cmd, " "))
+end, {buffer = true, desc = "Open PDF reader"})
