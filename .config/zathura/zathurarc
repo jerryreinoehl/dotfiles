@@ -1,6 +1,7 @@
 set recolor true
 set default-bg rgba(4,4,4,0.95)
 set recolor-lightcolor rgba(4,4,4,0)
+set recolor-darkcolor rgba(147,165,195,1)
 
 set index-bg rgba(4,4,4,0)
 
