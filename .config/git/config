@@ -52,6 +52,8 @@
 	oao = remote add origin
 	oo = remote show origin
 	os = remote show
+	ou = remote set-url
+	ouo = remote set-url origin
 	p = push
 	pf = push --follow-tags
 	po = push origin
