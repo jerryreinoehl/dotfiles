@@ -30,6 +30,7 @@
 	f = fetch
 	fa = fetch --all
 	fo = fetch origin
+	i = init
 	j = cherry-pick
 	k = checkout
 	kk = checkout -b
