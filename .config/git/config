@@ -2,6 +2,9 @@
 	email = jerryreinoehl@gmail.com
 	name = Jerry Reinoehl
 
+[init]
+	defaultBranch = main
+
 [pull]
 	rebase = true
 
