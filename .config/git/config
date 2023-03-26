@@ -17,6 +17,7 @@
 	bd = branch --delete
 	bdd = branch -D
 	bf = branch --force
+	bm = branch --move
 	bu = branch -u
 	c = commit -m
 	cam = commit --all -m
