@@ -16,7 +16,7 @@ zstyle ':completion:*' menu select
 
 # Source all files under zsh/source directory
 if [[ -r "$ZDOTDIR/source" ]]; then
-  for file in $ZDOTDIR/source/*; do
+  for file in "$ZDOTDIR/source"/*; do
     [[ -r "$file" ]] && source "$file"
   done
 fi
