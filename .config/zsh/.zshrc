@@ -9,6 +9,13 @@ bindkey -M viins '^H' backward-kill-word    # Ctrl-Backspace
 bindkey '^P' up-history                     # Ctrl-p
 bindkey '^N' down-history                   # Ctrl-n
 
+() {
+  # Add local completions to fpath
+  local completion="$ZDOTDIR/completion"
+  [[ ! -r "$completion" ]] && return
+  (( $fpath[(Ie)$completion] )) || fpath+=("$completion")
+}
+
 # Enable command completion
 autoload -Uz compinit
 compinit
