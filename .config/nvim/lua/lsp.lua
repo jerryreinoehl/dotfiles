@@ -23,7 +23,7 @@
 -- executable, `cmd[1]`.
 --
 -- `root_pat` can be used instead of `root_dir` to set the project root
--- diretory. Set `root_pat` to a list of files that are searched upward for,
+-- directory. Set `root_pat` to a list of files that are searched upward for,
 -- marking the project root directory. The following are equivalent:
 --
 --   root_pat = {".git"}
