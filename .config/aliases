@@ -161,3 +161,5 @@ __alias_ip() {
   __alias_tty_set
   COLORFGBG=";0" __alias_tty_ip "$@" | __alias_tty_less -FRX
 }
+
+# vim: ft=bash
