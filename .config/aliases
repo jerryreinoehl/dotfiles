@@ -62,7 +62,8 @@ fi
 # misc
 # ----------------------------------------------------------------------------
 alias g='git'
-alias goarm7='GOARCH=arm GOARM=7 go'
+alias go-arm7='GOARCH=arm GOARM=7 go'
+alias go-aarch64='GOARCH=arm64 go'
 alias helgrind='valgrind --tool=helgrind'
 alias less='less -FRX'
 alias i="${IMAGE_VIEWER:-sxiv}"
