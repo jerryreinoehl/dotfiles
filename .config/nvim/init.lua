@@ -15,8 +15,18 @@ require("nvimtmuxnav").setup {
 require("onedark").setup {
   -- Choose between "dark", "darker", "cool", "deep", "warm", "warmer", and
   -- "light"
-  style = "dark",
+  style = "cool",
   transparent = true, -- Show/hide background
+
+  colors = {
+    bright_purple = "#c678dd",
+  },
+
+  highlights = {
+    CurSearch = {fg = "$bg0", bg = "$bright_purple"},
+    IncSearch = {fg = "$bg0", bg = "$bright_purple"},
+    Search = {fg = "$bg0", bg = "$cyan"},
+  },
 
   diagnostics = {
     darker = false,
