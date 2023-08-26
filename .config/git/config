@@ -23,6 +23,7 @@
 	bm = branch --move
 	bu = branch -u
 	c = commit -m
+	ca = commit --amend -m
 	cam = commit --all -m
 	cav = commit --all --verbose
 	cc = commit --all -m
