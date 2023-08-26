@@ -27,6 +27,7 @@ configs=(
   [BASH]=".bashrc"
   [DIRCOLORS]=".dircolors"
   [FONTCONFIG]=".config/fontconfig/"
+  [GDB]=".config/gdb"
   [GIT]=".config/git/"
   [GNUPG]=".config/gnupg/"
   [LIBVIRT]=".config/libvirt/"
