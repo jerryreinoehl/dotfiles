@@ -12,10 +12,10 @@ alias f='__alias_find'
 alias ff='__alias_search'
 
 # ----------------------------------------------------------------------------
-# ls/exa
+# ls/eza
 # ----------------------------------------------------------------------------
-if command -v exa > /dev/null; then
-  alias ls='exa --group-directories-first'
+if command -v eza > /dev/null; then
+  alias ls='eza --group-directories-first'
   alias l='ls -aF'
   alias ll='l -bgl --time-style long-iso --color-scale'
   alias l1='l -1'
