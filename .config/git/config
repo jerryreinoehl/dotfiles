@@ -35,6 +35,13 @@
 	f = fetch
 	fa = fetch --all
 	fo = fetch origin
+	h = stash
+	ha = stash apply
+	hd = stash drop
+	hl = stash list
+	hp = stash show -p
+	hs = stash show
+	hy = stash pop
 	i = init
 	j = cherry-pick
 	k = checkout
