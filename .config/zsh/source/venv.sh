@@ -43,8 +43,8 @@ venv() {
   (( ${#args[@]} > 1 )) && venv_name="${args[*]:1:1}"
 
   if (( deactivate )); then
-    __venv_deactivate || rc=1
-    return "$rc"
+    __venv_deactivate
+    return $?
   fi
 
   if (( freeze )); then
@@ -55,17 +55,17 @@ venv() {
   if [[ -z "$VIRTUAL_ENV" ]]; then
     if (( create )); then
       __venv_create \
-        "$venv_name" "$venv_prompt" "$use_system_site_packages" || rc=1
+        "$venv_name" "$venv_prompt" "$use_system_site_packages" || rc=$?
     else
-      __venv_activate_by_name "$venv_name" || rc=1
+      __venv_activate_by_name "$venv_name" || rc=$?
     fi
   fi
 
   if (( install_requirements )); then
-    __venv_install_requirements "$requirements_file" || rc=1
+    __venv_install_requirements "$requirements_file" || rc=$?
   fi
 
-  return "$rc"
+  return $rc
 }
 
 __venv_search_venv_path() {
@@ -108,7 +108,7 @@ __venv_activate() {
 }
 
 __venv_deactivate() {
-  __venv_require_venv || return 1
+  __venv_require_venv || return $?
   deactivate
 }
 
@@ -136,7 +136,7 @@ __venv_create() {
 __venv_install_requirements() {
   local requirements_file="$1"
 
-  __venv_require_venv || return 1
+  __venv_require_venv || return $?
 
   if [[ ! -r "$requirements_file" ]]; then
     __venv_error "Unable to read requirements file: $requirements_file"
