@@ -2,7 +2,7 @@
 # shellcheck shell=bash
 # =============================================================================
 # venv.sh
-# v0.1.0
+# v0.2.0
 # =============================================================================
 
 venv() {
@@ -11,6 +11,7 @@ venv() {
   local venv_path venv_name="venv" venv_prompt
   local -i create=0
   local -i deactivate=0
+  local -i freeze=0
   local -i install_requirements=0
   local -i use_system_site_packages=0
   local arg
@@ -25,6 +26,8 @@ venv() {
     case "$arg" in
       -c) create=1 ;;
       -d) deactivate=1 ;;
+      -f) freeze=1 ;;
+      -F) freeze=1; requirements_file="/dev/stdout" ;;
       -n) venv_name="$1" ;;
       -r) install_requirements=1 ;;
       -R)
@@ -42,6 +45,11 @@ venv() {
   if (( deactivate )); then
     __venv_deactivate || rc=1
     return "$rc"
+  fi
+
+  if (( freeze )); then
+    __venv_freeze "$requirements_file"
+    return $?
   fi
 
   if [[ -z "$VIRTUAL_ENV" ]]; then
@@ -137,6 +145,12 @@ __venv_install_requirements() {
 
   __venv_info "Installing requirements..."
   pip install -r "$requirements_file"
+}
+
+__venv_freeze() {
+  local requirements_file="$1"
+  pip freeze > "$requirements_file"
+  return $?
 }
 
 __venv_error() {
