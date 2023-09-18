@@ -72,6 +72,7 @@ alias tree='tree -C'
 alias vim="${VISUAL:-vim}"
 alias v='vim'
 alias vi='vim'
+alias vv='venv'
 alias zathura='zathura --fork'
 alias z='zathura'
 alias :q='exit'
