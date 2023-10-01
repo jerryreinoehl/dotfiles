@@ -13,6 +13,7 @@ export HISTFILE="$ZDOTDIR/.zhistory"
 export HISTSIZE=100000
 export SAVEHIST=100000
 
+export ANSIBLE_COW_SELECTION='small'
 export ANSIBLE_STDOUT_CALLBACK='debug'
 
 export IMAGE_VIEWER='sxiv'
