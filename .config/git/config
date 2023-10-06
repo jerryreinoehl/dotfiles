@@ -1,3 +1,6 @@
+[core]
+	pager = less -x1,5
+
 [user]
 	email = jerryreinoehl@gmail.com
 	name = Jerry Reinoehl
