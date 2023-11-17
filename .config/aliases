@@ -17,7 +17,7 @@ alias ff='__alias_search'
 if command -v eza > /dev/null; then
   alias ls='eza --group-directories-first'
   alias l='ls -aF'
-  alias ll='l -bgl --time-style long-iso --color-scale'
+  alias ll='l -bgl --time-style long-iso'
   alias l1='l -1'
   alias lt='l --tree'
   alias llt='lt -l'
