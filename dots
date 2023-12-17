@@ -33,6 +33,7 @@ configs=(
   [LIBVIRT]=".config/libvirt/"
   [LOCAL]=".local/"
   [NVIM]=".config/nvim/"
+  [PACMAN]=".config/pacman/"
   [PICOM]=".config/picom/"
   [QTILE]=".config/qtile/"
   [TMUX]=".config/tmux/"
