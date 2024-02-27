@@ -49,6 +49,7 @@
 	j = cherry-pick
 	k = checkout
 	kk = checkout -b
+	km = checkout main
 	l = log
 	l1 = log --oneline
 	la = log --all
