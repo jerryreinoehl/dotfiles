@@ -80,9 +80,11 @@
 	pu = push --set-upstream
 	puo = push --set-upstream origin
 	r = reset
-	s = status
-	ss = status -sb
+	s = status -sb
 	sh = show
+	ss = status
+	st = status -sb --untracked-files=no
+	sv = status -v
 	t = tag
 	tam = tag --annotate -m
 	td = tag --delete
