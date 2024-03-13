@@ -81,6 +81,7 @@
 	puo = push --set-upstream origin
 	r = reset
 	s = status
+	ss = status -sb
 	sh = show
 	t = tag
 	tam = tag --annotate -m
