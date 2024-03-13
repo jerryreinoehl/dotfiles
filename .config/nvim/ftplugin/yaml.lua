@@ -1,2 +1,2 @@
-vim.fn.matchadd("yamlBool", [[\v\c^[^"]+\zsno\ze\s*(#|$)]])
-vim.fn.matchadd("yamlBool", [[\v\c^[^"]+\zsyes\ze\s*(#|$)]])
+-- Color `yes` and `no` as booleans.
+vim.fn.matchadd("yamlBool", [[\v\c^[^"]+\zs(yes|no)\ze\s*(#|$)]])
