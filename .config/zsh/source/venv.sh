@@ -185,6 +185,7 @@ __venv_delete() {
   fi
 
   [[ -n $VIRTUAL_ENV ]] && __venv_deactivate
+  __venv_info "Deleting $venv_path..."
   rm -rf "$venv_path"
   return $?
 }
