@@ -76,7 +76,7 @@ venv() {
     if (( create )); then
       __venv_create "$venv_prompt" "$use_system_site_packages" || rc=$?
     else
-      __venv_activate_by_name || rc=$?
+      __venv_auto_activate || rc=$?
     fi
   fi
 
@@ -101,7 +101,7 @@ __venv_search_venv_path() {
   done
 }
 
-__venv_activate_by_name() {
+__venv_auto_activate() {
   local venv_path
   local source_path
   local REPLY
