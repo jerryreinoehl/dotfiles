@@ -4,6 +4,7 @@ setopt histignorealldups
 KEYTIMEOUT=15
 bindkey -v # Set vi keymap
 bindkey -M viins 'jk' vi-cmd-mode
+bindkey -M viins ';;' vi-forward-char
 bindkey -M viins '^?' backward-delete-char  # Backspace
 bindkey -M viins '^H' backward-kill-word    # Ctrl-Backspace
 bindkey '^P' up-history                     # Ctrl-p
