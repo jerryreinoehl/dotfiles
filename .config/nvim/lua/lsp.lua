@@ -29,7 +29,7 @@
 --   root_pat = {".git"}
 --   root_dir = vim.fs.dirname(vim.fs.find({".git"}, {upward = true})[1])
 --
--- The default `root_pat` is `{".git"}`.
+-- The default `root_pat` is `{".git", "setup.cfg"}`.
 --
 -- Example:
 --
@@ -60,7 +60,7 @@
 local M = {}
 
 local defaults = {
-  root_pat = {".git"},
+  root_pat = {".git", "setup.cfg"},
 }
 
 local function is_valid_cmd(cmd)
