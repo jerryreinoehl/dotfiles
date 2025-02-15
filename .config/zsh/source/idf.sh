@@ -10,4 +10,9 @@
 idf() {
   [[ -z $IDF_PATH ]] && source /opt/esp-idf/export.sh
   idf.py "$@"
+
+  # Redefine `idf` to skip check for `IDF_PATH`.
+  idf() {
+    idf.py "$@"
+  }
 }
