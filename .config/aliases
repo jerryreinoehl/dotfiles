@@ -69,6 +69,7 @@ alias less='less -FRX'
 alias i="${IMAGE_VIEWER:-sxiv}"
 alias ip='__alias_ip'
 alias mk='make'
+alias py='python'
 alias tree='tree -C'
 alias vim="${VISUAL:-vim}"
 alias v='vim'
