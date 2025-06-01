@@ -62,6 +62,7 @@
 	lp = log --patch
 	m = merge
 	mm = rebase
+	mmc = rebase --continue
 	mmo = rebase origin
 	mo = merge origin
 	o = remote
