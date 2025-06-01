@@ -1,0 +1,88 @@
+{
+  "layer": "top",
+  "position": "top",
+  "reload_style_on_change": true,
+
+  "modules-left": [],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["idle_inhibitor", "bluetooth", "pulseaudio", "cpu", "network", "clock"],
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "urgent": "",
+      "default": ""
+    },
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "persistent-workspaces": {
+      "*": [1, 2, 3]
+    }
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰈈 ",
+      "deactivated": "󰈉 "
+    }
+  },
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-on": "󰂯",
+    "format-connected": "󰂱",
+    "format-connected-battery": "󰂱  {device_battery_percentage}",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲"
+  },
+
+  "pulseaudio": {
+    "format": "{icon}   {volume}",
+    "format-bluetooth": "{icon}   {volume}",
+    "format-muted": "󰖁   {volume}",
+    "format-bluetooth-muted": "{icon}   {volume}",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": " ",
+      "phone": "",
+      "phone-muted": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    },
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+
+
+  "cpu": {
+    "format": " "
+  },
+
+  "network": {
+    "format-wifi": "󰖩 ",
+    "format-ethernet": " ",
+    "format-disconnected": "󱐅",
+    "format-alt": "{ifname}",
+    "tooltip-format": "{ipaddr}",
+    "tooltip-format-wifi": "{essid}, ({signalStrength}%) 󰖩  | {ipaddr}",
+    "tooltip-format-ethernet": "{ifname} 🖧 | {ipaddr}",
+  },
+
+  "clock": {
+    "format": "{:%A, %d %b %Y %H:%M}",
+    "tooltip-format": "<span>{calendar}</span>",
+    "calendar": {
+      "mode": "month",
+      "format": {
+        "months": "<span color='#ff6699'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'><b>{}</b></span>",
+        "weekdays": "<span color='#7cd37c'><b>{}</b></span>",
+        "today": "<span color='#ffcc66'><b>{}</b></span>"
+      }
+    }
+  }
+}

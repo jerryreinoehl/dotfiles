@@ -1,0 +1,49 @@
+@define-color foreground #eeeeee;
+@define-color foreground-inactive #666666;
+@define-color background rgba(0, 0, 0, 0.7);
+
+* {
+  min-height: 0;
+  font-family: Source Serif Pro;
+  font-size: 15px;
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  border-radius: 0;
+}
+
+#waybar {
+  color: @foreground;
+  background: @background;
+  opacity: 0.8;
+}
+
+#workspaces button {
+  color: @foreground;
+  background: transparent;
+  padding: 0.2em;
+  border: none;
+}
+
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  opacity: 0.5;
+}
+
+#bluetooth,
+#idle_inhibitor,
+#cpu,
+#pulseaudio,
+#clock,
+#network {
+  padding: 0em 0.2em 0em 0.2em;
+}
+
+#bluetooth.connected {
+  color: #007aff;
+}
+
+#idle_inhibitor.activated {
+  color: #ffaf5f;
+}
