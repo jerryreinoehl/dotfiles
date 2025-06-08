@@ -132,7 +132,8 @@ __alias_tty_ip() {
 # tty alias functions
 # ----------------------------------------------------------------------------
 __alias_find() {
-  local -a args=($@) find_args grep_args
+  local -a args find_args grep_args
+  args=("$@")
   local -i argc="${#args[@]}"
   local pattern
 
