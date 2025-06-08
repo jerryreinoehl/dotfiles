@@ -5,7 +5,7 @@
 
   "modules-left": [],
   "modules-center": ["hyprland/workspaces"],
-  "modules-right": ["idle_inhibitor", "bluetooth", "pulseaudio", "cpu", "network", "clock"],
+  "modules-right": ["idle_inhibitor", "bluetooth", "pulseaudio", "cpu", "battery", "network", "clock"],
 
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -70,6 +70,35 @@
     "tooltip-format": "{ipaddr}",
     "tooltip-format-wifi": "{essid}, ({signalStrength}%) 󰖩  | {ipaddr}",
     "tooltip-format-ethernet": "{ifname} 🖧 | {ipaddr}",
+  },
+
+  "battery": {
+    "interval": 60,
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂅 {capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "states": {
+      "10": 10,
+      "20": 20,
+      "30": 30,
+      "40": 40,
+      "50": 50,
+      "60": 60,
+      "70": 70,
+      "80": 80,
+      "90": 90,
+      "100": 100
+    },
+    "format-charging-10": "󰢜 ",
+    "format-charging-20": "󰂆 ",
+    "format-charging-30": "󰂇 ",
+    "format-charging-40": "󰂈 ",
+    "format-charging-50": "󰢝 ",
+    "format-charging-60": "󰂉 ",
+    "format-charging-70": "󰢞 ",
+    "format-charging-80": "󰂊 ",
+    "format-charging-90": "󰂋 ",
+    "format-charging-100": "󰂅  {capacity}%"
   },
 
   "clock": {
