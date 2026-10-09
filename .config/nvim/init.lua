@@ -264,10 +264,10 @@ vim.api.nvim_create_autocmd({"LspAttach"}, {
   callback = function()
     -- LSP bindings.
     vim.keymap.set(
-      "n", "K", vim.lsp.buf.hover, {buffer = true, desc = "Hover"}
+      "n", "gd", vim.lsp.buf.definition, {buffer = true, desc = "Go to definition"}
     )
     vim.keymap.set(
-      "n", "gd", vim.lsp.buf.definition, {buffer = true, desc = "Go to definition"}
+      "n", "K", vim.diagnostic.open_float, {buffer = true, desc = "Open diagnostics"}
     )
   end
 })
