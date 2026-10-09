@@ -19,14 +19,16 @@ if command -v eza > /dev/null; then
   alias l='ls -a -F auto'
   alias ll='l -bgl --time-style long-iso'
   alias l1='l -1'
-  alias lt='l --tree'
+  alias lt='ls --tree'
+  alias lat='l --tree'
   alias llt='lt -l'
 else
   alias ls='ls --group-directories-first --color=auto'
   alias l='ls -vAF'
   alias ll='l -hl'
   alias l1='l -1'
-  alias lt='l -R'
+  alias lt='ls -R'
+  alias lat='l -R'
   alias llt='lt -l'
 fi
 
