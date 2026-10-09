@@ -107,6 +107,21 @@ unbak() {
   done
 }
 
+# Find and replace
+far() {
+  local find="$1"
+  local replace="$2"
+  local confirm="$3"
+
+  if [[ -z $replace ]]; then
+    find ./ -type f -exec sed -r -n -e "s@(\\<$find\\>)@\x1b[1;31m\1\x1b[0m@p" {} +
+  elif [[ -z $confirm ]]; then
+    find ./ -type f -exec sed -r -n -e "s@(\\<$find\\>)@\x1b[1;31m\1\x1b[0;1;36m->\x1b[0;1;32m$replace\x1b[0m@p" {} +
+  else
+    find ./ -type f -exec sed -r -i -e "s;\\<$find\\>;$replace;" {} +
+  fi
+}
+
 # ----------------------------------------------------------------------------
 # tty helper functions
 # ----------------------------------------------------------------------------
