@@ -114,11 +114,11 @@ far() {
   local confirm="$3"
 
   if [[ -z $replace ]]; then
-    find ./ -type f -exec sed -r -n -e "s@(\\<$find\\>)@\x1b[1;31m\1\x1b[0m@p" {} +
+    find ./ -type f -exec sed -r -n -e "s@(\\<$find\\>)@\x1b[1;31m\1\x1b[0m@gp" {} +
   elif [[ -z $confirm ]]; then
-    find ./ -type f -exec sed -r -n -e "s@(\\<$find\\>)@\x1b[1;31m\1\x1b[0;1;36m->\x1b[0;1;32m$replace\x1b[0m@p" {} +
+    find ./ -type f -exec sed -r -n -e "s@(\\<$find\\>)@\x1b[1;31m\1\x1b[0;1;36m->\x1b[0;1;32m$replace\x1b[0m@gp" {} +
   else
-    find ./ -type f -exec sed -r -i -e "s;\\<$find\\>;$replace;" {} +
+    find ./ -type f -exec sed -r -i -e "s;\\<$find\\>;$replace;g" {} +
   fi
 }
 
