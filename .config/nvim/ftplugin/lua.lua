@@ -6,7 +6,10 @@ require("lsp").setup {
         version = "LuaJIT",
       },
       diagnostics = {
-        globals = {"vim"}, -- Recognize the `vim` global.
+        globals = {
+          "vim", -- nvim
+          "hl",  -- hyprland
+        },
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
