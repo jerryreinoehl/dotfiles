@@ -242,7 +242,7 @@ hl.gesture({
 local mainMod = "SUPER"
 
 -- mainMod + SHIFT + L: Lock screen
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(lock));
+hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd(lock));
 
 -- mainMod + B: Launch browser
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
